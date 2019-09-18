@@ -60,18 +60,18 @@ void init() {
 
 
 void  map_collision(){
-	sensor_a = (xpos - 0x07);
-	sensor_b = (xpos + 7u);
+	sensor_a = (xpos - 0x03); //ground
+	sensor_b = (xpos + 0x05); //ground
 	
-	sensor_c = (xpos - 0x07);
-	sensor_d = (xpos + 7u); 
+	sensor_c = (xpos - 0x07); //left
+	sensor_d = (xpos + 0x07); //right
 	
 	sensor_y = (ypos + 16u); 
 	
-	move_sprite(4, sensor_a, sensor_y);
+	/*move_sprite(4, sensor_a, sensor_y);
 	move_sprite(5, sensor_b , sensor_y);
 	move_sprite(6, sensor_c, (sensor_y - 8u));
-	move_sprite(7, sensor_d, (sensor_y - 8u));
+	move_sprite(7, sensor_d, (sensor_y - 8u));*/
 	
 	sensor_a = sensor_a >> 3;
 	sensor_b = sensor_b >> 3;
@@ -184,7 +184,7 @@ void main() {
 		
 	
 		
-		//if(stepCounter > 0x01){
+		if(stepCounter > 0x02){
 			stepCounter = 0x00;
 			checkInput();
 			map_collision();	
@@ -221,9 +221,9 @@ void main() {
 				ypos+= gravity;
 			}	
 			
-		/*}else{
+		}else{
 			stepCounter+= 0x01;
-		}*/
+		}
     }
 
 }
