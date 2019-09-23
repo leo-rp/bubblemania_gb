@@ -14,7 +14,7 @@
 #define GAME_OVER  0X05
 
 
-#define mapSize 0x14
+#define mapSize 0x16
 #define SOLID 0x3F
 #define IS_SOLID(x) (x > SOLID ) ? TRUE : FALSE
 #define maximo(a,b) (a > b) ? a : b
@@ -32,11 +32,26 @@ const UINT8 fadePals[] = {
 	0x00  // 00000000
 };
 
+unsigned char effect[] =
+{
+   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,
+	0x02,0x02,0x02,0x02,0x02,0x02,0x02,0x02,
+	0x03,0x03,0x03,0x03,0x03,0x03,0x03,0x03,
+	0x04,0x04,0x04,0x04,0x04,0x04,0x04,0x04,
+	0x05,0x05,0x05,0x05,0x05,0x05,0x05,0x05,
+	0x04,0x04,0x04,0x04,0x04,0x04,0x04,0x04,
+	0x03,0x03,0x03,0x03,0x03,0x03,0x03,0x03,
+	0x02,0x02,0x02,0x02,0x02,0x02,0x02,0x02,
+	0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,
+	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+	
+};
+
 INT8 game_status;
 INT16 xpos, ypos; 
 INT8 ysp, gravity, jump_force, speed_movement;
-INT16 sensor_a, sensor_b, sensor_c, sensor_d, sensor_y;	
-UINT8 col_mapxy[18][20];
+INT16 sensor_a, sensor_b;
 
 
 UINT8 pldir;
@@ -44,7 +59,40 @@ UINT8 onGround, can_jump;
 UINT8 stepCounter = 0;
 UBYTE oldjoystate, joystate;
 UINT8 i;
+	INT16 index, index2;
 
+UBYTE ix, iy, counter, offset, win;
+UINT16 p1, p2;
+
+
+
+void LCD_Interrupt(void){
+
+	
+	/*
+	
+	
+	if(LY_REG < 120u) {
+		
+		SCX_REG = 0x00;
+	}else{
+		
+		SCX_REG = effect[counter];		
+		
+		if(counter != 64u){
+			
+			counter+=1;
+		}else{
+			counter = 0;
+		}
+		
+		
+	}
+	
+	//SCX_REG = 0x00;
+	
+*/
+}
 
 void fade(){
 	
@@ -55,56 +103,76 @@ void fade(){
 }
 
 
-
-
-
-void  map_collision(){
-	sensor_a = (xpos - 0x03); //ground
-	sensor_b = (xpos + 0x05); //ground
+INT16 map_down_collision(INT16 x, INT16 y){
+	INT16 a, b, x2;
 	
-	sensor_c = (xpos - 0x07); //left
-	sensor_d = (xpos + 0x07); //right
+	x2 = x + 0x07;
+	x = x - 0x08;
+	x = x >> 3;
+	x2 = x2 >> 3;
 	
-	sensor_y = (ypos + 16u); 
+	y = y + 0x0D;
+	y = y >> 3;
+			
+	index = ((mapSize * y) + x);
+	a = map[index];
+	index2 = ((mapSize * y) + x2);
+	b = map[index2];
 	
-	/*move_sprite(4, sensor_a, sensor_y);
-	move_sprite(5, sensor_b , sensor_y);
-	move_sprite(6, sensor_c, (sensor_y - 8u));
-	move_sprite(7, sensor_d, (sensor_y - 8u));*/
-	
-	sensor_a = sensor_a >> 3;
-	sensor_b = sensor_b >> 3;
-	sensor_c = sensor_c >> 3;
-	sensor_d = sensor_d >> 3;
-	
-	sensor_y = sensor_y >> 3;
-	sensor_y = (sensor_y - 0x02);
-	
-	sensor_a = ( (mapSize * sensor_y ) + sensor_a);
-	sensor_a = map[sensor_a];
-	
-	sensor_b = ( (mapSize * sensor_y ) + sensor_b);
-	sensor_b = map[sensor_b];
-	
-	
-	sensor_y = (sensor_y - 0x01);
-	
-	sensor_c = ( (mapSize * sensor_y) + sensor_c);
-	sensor_c = map[sensor_c];
-	
-	sensor_d = ( (mapSize * sensor_y) + sensor_d);
-	sensor_d = map[sensor_d];
-	
-	sensor_c = IS_SOLID(sensor_c);
-	sensor_d = IS_SOLID(sensor_d);
-	
-	if(IS_SOLID(sensor_a) || IS_SOLID(sensor_b)){
-		onGround = TRUE;
+	if( IS_SOLID(a) || IS_SOLID(b)){
+		return 1;
 	}else{
-		onGround = FALSE;
+		return 0;
+	}
+}
+
+INT16 map_collision(INT16 x, INT16 y, UINT8 dir){
+	INT16 a, b; 
+	x = x - 0x08;
+	switch (dir) {
+		case 0x00:
+			y = y - 0x0D;
+		break;
+		
+		case 0x02:
+			x-= 0x01;
+			x+= speed_movement;
+			a = 0x02;
+			b = 0x02;
+			
+		break;
+		
+		case 0x04: //down
+		break;
+		
+		
+		case 0x08: //left
+			
+			x-= speed_movement;
+			a = 0x00;
+			b = 0x00;
+			
+		break;
 	}
 	
+	
+	x = x >> 3;
+	y = y >> 3;
+	
+	
+	index = ((mapSize * y) + x);
+	
+	
+	a = map[index + a];
+	b = map[(index + b) +  mapSize];
+	
+	if( IS_SOLID(a) || IS_SOLID(b)  ){
+		return 1;
+	}else{
+		return 0;
+	}
 }
+
 
 void set_pl_sprites_prop(UINT8 s0, UINT8 s1, UINT8 s2, UINT8 s3, UINT8 sflip){
 	set_sprite_tile(0, s0);
@@ -119,13 +187,15 @@ void set_pl_sprites_prop(UINT8 s0, UINT8 s1, UINT8 s2, UINT8 s3, UINT8 sflip){
 
 
 void checkInput() {
-			/*oldjoystate = joystate;
-			joystate = joypad();*/	
+			oldjoystate = joystate;
+			joystate = joypad();	
 	
 		
 			if (joypad() & J_A){
-				ysp = jump_force;
-			}			
+				ysp = jump_force;				
+			}
+			
+			
 		
 		
 		
@@ -138,35 +208,37 @@ void checkInput() {
 		
 		
 		if (joypad() & J_LEFT){
-			if(pldir != 0x02){
-			  pldir = 0x02;
+			if(pldir != 0x08){
+			  pldir = 0x08;
 			  set_pl_sprites_prop(0x02, 0x03, 0x00, 0x01, 0x20);
 			}
 			
 			if(xpos != 0x08){
-				if(sensor_c == FALSE){
+				if(!map_collision(xpos, ypos, 0x08)){
 					xpos-= speed_movement;
 				}
 			}			
 		}
 		
 		if (joypad() & J_RIGHT){
-			if(pldir != 0x04){
-				pldir = 0x04;
+			if(pldir != 0x02){
+				pldir = 0x02;
 				set_pl_sprites_prop(0x00, 0x01, 0x02, 0x03, 0x00);
 			}
 			
 			if(xpos != 0x98){
-				if(sensor_d == FALSE){
+				
+				if(!map_collision(xpos, ypos, 0x02)){
 					xpos+= speed_movement;
 				}
 			}
 		}
 		
 		if (joypad() & J_START){
-		 printf("X%u Y%u \n", (UINT16)xpos, (UINT16)ypos );
-		 printf("Sc%u Sd%u Sy%u \n", (INT16)sensor_c, (INT16)sensor_d, (INT16)sensor_y ); 
-		 printf("Sa%u Sb%u Sy%u \n", (INT16)sensor_a, (INT16)sensor_b, (INT16)sensor_y ); 
+		 printf("..X%u Y%u \n", (INT16)xpos, (INT16)ypos );
+		 
+		 printf("Index:%u Index2:%u \n", (INT16)index, (INT16)index2 );
+		  
 		}
 		
 		if ( joypad() & J_SELECT ){
@@ -178,19 +250,45 @@ void checkInput() {
 	
 
 void game_play(){
-	if(stepCounter > 0x01){			
+	if(stepCounter > 0x02){			
 		stepCounter = 0x00;
+		
 		checkInput();
-		map_collision();				
+		onGround = map_down_collision(xpos, ypos);
+		
+		
+		
+
+		if( ypos > 0x17){
+			ypos-= ysp;				
 			
+		}
+		if(ysp != 0x00){
+			 ysp-= 0x01;
+		}
+		
 		if(onGround){
-			if(pldir == 0x02){
+			ysp = 0x00;
+			//ypos-=gravity;
+		}else{
+			ypos+= gravity;
+		}
+
+		
+		move_sprite(0, xpos - 0x08, ypos);
+		move_sprite(1, xpos - 0x08, ypos + 0x08);
+		move_sprite(2, xpos, ypos );
+		move_sprite(3, xpos, ypos + 0x08);
+
+		
+		if(onGround){
+			if(pldir == 0x08){
 				set_pl_sprites_prop(0x02, 0x03, 0x00, 0x01, 0x20);
 			}else{
 				set_pl_sprites_prop(0x00, 0x01, 0x02, 0x03, 0x00);
 			}
 		}else{
-			if(pldir == 0x04){
+			if(pldir == 0x02){
 				set_pl_sprites_prop(0x04, 0x05, 0x06, 0x07, 0x00);
 			}else{
 				set_pl_sprites_prop(0x06, 0x07, 0x04, 0x05, 0x20);
@@ -198,24 +296,9 @@ void game_play(){
 		}
 			
 			
-		move_sprite(0, xpos, ypos);
-		move_sprite(1, xpos, ypos + 0x08);
-		move_sprite(2, xpos + 0x08, ypos );
-		move_sprite(3, xpos + 0x08, ypos + 0x08);
 			
 				
-		if( ypos > 0x0F){
-			ypos-= ysp;				
-			if(ysp > 0x00){
-			 ysp-= gravity;
-			}
-		}
-							
-		if(onGround){
-			ysp = 0x00;			
-		}else{
-			ypos+= gravity;
-		}
+		
 			
 	}else{			
 		stepCounter+= 0x01;
@@ -226,16 +309,25 @@ void game_play(){
 
 void game_boot() {
     //memcpy(&col_mapxy, &map, sizeof(unsigned char) * 360);
+	
 	HIDE_SPRITES;
 	HIDE_WIN;
     HIDE_BKG;
+    STAT_REG = 8;
+    
+    //disable_interrupts();
+    //add_LCD(LCD_Interrupt);
+	//add_VBL(VBL_Interrupt);
+    //enable_interrupts();
+    
+   
 	
-	if((_cpu == 0x01 )  || (_cpu == 0xFF)){
+	/*if((_cpu == 0x01 )  || (_cpu == 0xFF)){
 	  BGP_REG = 0x01B; //classic and pocket	
-	}
+	}*/
 	
     set_bkg_data(0, 127, maptiles);
-    set_bkg_tiles(0, 0, 20, 19, map);
+    set_bkg_tiles(0, 0, 22, 21, map);
     
 	set_sprite_data(0, 12, face);	
 	set_sprite_tile(0, 0);
@@ -249,16 +341,21 @@ void game_boot() {
 	set_sprite_tile(7, 9);
 	
 	gravity = 0x02;
-	jump_force = 0x04;
-	speed_movement = 0x02;
+	jump_force = 0x08;
+	speed_movement = 0x01;
     xpos = 0x50;
     ypos = 0x10;
 	ysp = 0x00;
 	pldir = 0x04;
 	
-	DISPLAY_ON;	
+	SCX_REG = 0x08;
+	SCY_REG = 0x0F;
+	
+	//set_interrupts(LCD_IFLAG | VBL_IFLAG );
+    
     SHOW_BKG;
-    SHOW_SPRITES;
+    //SHOW_WIN;
+	SHOW_SPRITES;
 }
 
 void main() {
