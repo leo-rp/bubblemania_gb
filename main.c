@@ -102,6 +102,29 @@ void fade(){
 	}
 }
 
+INT16 map_up_collision(INT16 x, INT16 y){
+	INT16 a, b, x2;
+	
+	x2 = x + 0x07;
+	x = x - 0x08;
+	x = x >> 3;
+	x2 = x2 >> 3;
+	
+	y = y - 0x08;
+	y = y >> 3;
+			
+	index = ((mapSize * y) + x);
+	a = map[index];
+	index2 = ((mapSize * y) + x2);
+	b = map[index2];
+	
+	if( IS_SOLID(a) || IS_SOLID(b)){
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
 
 INT16 map_down_collision(INT16 x, INT16 y){
 	INT16 a, b, x2;
@@ -137,8 +160,8 @@ INT16 map_collision(INT16 x, INT16 y, UINT8 dir){
 		case 0x02:
 			x-= 0x01;
 			x+= speed_movement;
-			a = 0x02;
 			b = 0x02;
+			a = 0x02;
 			
 		break;
 		
@@ -192,7 +215,10 @@ void checkInput() {
 	
 		
 			if (joypad() & J_A){
-				ysp = jump_force;				
+				
+				if(!map_up_collision(xpos, ypos)){
+				   ysp = jump_force;				
+				}
 			}
 			
 			
