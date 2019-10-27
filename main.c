@@ -18,7 +18,8 @@
 #define STATE_GAME_OVER  0x05
 
 #define STATE_GAME_LOGO  0x06
-#define STATE_GAME_LOGO2  0x07
+#define STATE_GAME_CONTEST  0x07
+#define MAX_BUBBLES_ON_SCREEN 0x03
 
 
 #define MAXIMO(a,b) (a > b) ? a : b
@@ -32,6 +33,17 @@ extern const unsigned char water[];
 extern const int oldrobotto_tile_count;
 extern const unsigned char oldrobotto_map_data[];
 extern const unsigned char oldrobotto_tile_data[]; 
+
+extern const int logo_2_a_tile_count;
+extern const unsigned char logo_2_a_map_data[];
+extern const unsigned char logo_2_a_tile_data[]; 
+
+extern const int logo_2_b_tile_count;
+extern const unsigned char logo_2_b_map_data[];
+extern const unsigned char logo_2_b_tile_data[]; 
+
+extern const unsigned char year[];
+
 extern const int background_tile_count;
 extern const unsigned char background_map_data[];
 extern const unsigned char background_tile_data[]; 
@@ -48,10 +60,12 @@ UINT8 i;
 /*game vars*/
 UINT8 game_state;
 UINT8 game_play_counter;
+UINT8 difficulty;
+
 UINT16 frame_counter;
 UINT8 oldjoystate, joystate;
 UINT16 score;
-UINT8 score_stars;
+
 
 
 /* water*/
@@ -63,6 +77,8 @@ UINT8 water_delay;
 /* player vars*/ 
 UINT8 xpos, ypos, ypos2; 
 UINT8 ysp, xsp, gravity, jump_force, shoot_force, speed_movement, player_direction;
+UINT8 lives; 
+UINT8 bubbles; 
 
 /*fx*/
 
@@ -82,10 +98,10 @@ UINT8 sflip, sprite_index;
 };*/
 
 
-UINT8 bubbles_x[4];
-UINT8 bubbles_y[4];
-UINT8 bubbles_active[4];
-UINT8 bubbles_direction[4];
+UINT8 bubbles_x[MAX_BUBBLES_ON_SCREEN];
+UINT8 bubbles_y[MAX_BUBBLES_ON_SCREEN];
+UINT8 bubbles_active[MAX_BUBBLES_ON_SCREEN];
+UINT8 bubbles_direction[MAX_BUBBLES_ON_SCREEN];
 
 //struct Bubble bubbles[3];
 
@@ -108,22 +124,9 @@ void load_score(){
 	DISABLE_RAM_MBC1;
 }
 
-
-/*
-INT8 getFreeSprite(){
-	for(i = 2; i < 40; i=1){
-		if(sprites[i].active){			
-		}else{
-			return i;
-		} 
-	}
-}
-*/
-
-
 void initBubbles(){
   UINT8 i;
-  for( i = 0; i != 3; i ++){
+  for( i = 0; i != MAX_BUBBLES_ON_SCREEN; i ++){
      bubbles_x[i] = 0;
      bubbles_y[i] = 0;
      bubbles_active[i] = 0;
@@ -131,21 +134,31 @@ void initBubbles(){
   
   set_sprite_tile(8, 0x30);
   set_sprite_tile(9, 0x30);
-
   set_sprite_tile(10, 0x30);
-  set_sprite_tile(11, 0x30);
 
+  set_sprite_tile(11, 0x32);
   set_sprite_tile(12, 0x32);
-  set_sprite_tile(13, 0x32);
+  set_sprite_tile(13, 0x32);  
+}
 
-  set_sprite_tile(14, 0x32);
-  set_sprite_tile(15, 0x32);
-  
+
+void drawBubble(UINT8 i){
+	if(bubbles_direction[i] == 0x06){
+		set_sprite_prop(8 + i, 0x00);
+     	set_sprite_prop(11 + i, 0x00);
+     	move_sprite(8 + i, bubbles_x[i], bubbles_y[i]);      
+     	move_sprite(11 + i, bubbles_x[i] + 8 , bubbles_y[i]); 
+	}else{
+		set_sprite_prop(8 + i, 0x20);
+     	set_sprite_prop(11 + i, 0x20);
+     	move_sprite(8 + i, bubbles_x[i], bubbles_y[i]);      
+     	move_sprite(11 + i, bubbles_x[i] - 8 , bubbles_y[i]); 
+	}
 }
 
 void newBubble(){   	
 	UINT8 i;
-	for( i = 0; i != 3; i++){
+	for( i = 0; i != MAX_BUBBLES_ON_SCREEN; i++){
 	    if( !bubbles_active[i]){    
 		     bubbles_y[i] = ypos + 16;
 		     bubbles_active[i] = 1;
@@ -153,18 +166,10 @@ void newBubble(){
 
 		     if(bubbles_direction[i] == 0x06){
 		     	bubbles_x[i] = xpos + 16;
-		     	set_sprite_prop(8 + i, 0x00);
-		     	set_sprite_prop(12 + i, 0x00);
-		     	move_sprite(8 + i, bubbles_x[i], bubbles_y[i]);      
-		     	move_sprite(12 + i, bubbles_x[i] + 8 , bubbles_y[i]); 
 		     }else{
 		     	bubbles_x[i] = xpos;
-		     	set_sprite_prop(8 + i, 0x20);
-		     	set_sprite_prop(12 + i, 0x20);
-		     	move_sprite(8 + i, bubbles_x[i], bubbles_y[i]);      
-		     	move_sprite(12 + i, bubbles_x[i] - 8 , bubbles_y[i]); 
 		     }
-		     
+		     drawBubble(i);
 		     break;
 	    }
   	}
@@ -172,25 +177,15 @@ void newBubble(){
 
 void updateBubbles(){  
 	UINT8 i;
-	for( i = 0; i != 3; i++){
+	for( i = 0; i != MAX_BUBBLES_ON_SCREEN; i++){
 		if(bubbles_active[i]){ 
 			if( bubbles_x[i] < 168  || bubbles_x[i] < 4){
 				if(bubbles_direction[i] == 0x06){
-			     	bubbles_x[i] += 6;
-			     	set_sprite_prop(8 + i, 0x00);
-		     		set_sprite_prop(12 + i, 0x00);
-			     	move_sprite(8 + i, bubbles_x[i], bubbles_y[i]);      
-			     	move_sprite(12 + i, bubbles_x[i] + 8 , bubbles_y[i]); 
+			     	bubbles_x[i] += 6;			     	
 		     	}else{		     		
 			     	bubbles_x[i] -= 6;
-			     	set_sprite_prop(8 + i, 0x20);
-		     		set_sprite_prop(12 + i, 0x20);
-			     	move_sprite(8 + i, bubbles_x[i], bubbles_y[i]);      
-			     	move_sprite(12 + i, bubbles_x[i] - 8 , bubbles_y[i]); 
 		     	}
-
-
-			     
+		     	drawBubble(i);
 			}else{
 	  			bubbles_active[i] = 0;    
 	      		bubbles_x[i] = 0;
@@ -211,21 +206,15 @@ void PlaySoundJump(){
 
 void drawScore(UINT8 x, UINT8 y, UINT8 offset, UINT16 value) {
 	UINT8 tile;
-	if(value >= 1000U) {
-			
+	if(value >= 1000U) {			
 			score= 0;			
-			score_stars += 1U;
+			
 			value = 0;
 			tile = 0;
-			tile+= offset;
-			
+			tile+= offset;			
 			set_win_tiles(x+1u, y, 1U, 1U, &tile);
 			set_win_tiles(x+2u, y, 1U, 1U, &tile);
 			set_win_tiles(x+3U, y, 1U, 1U, &tile);
-
-			tile = 18u;
-			tile+= offset;
-			set_win_tiles(20 - score_stars, y, 1U, 1U, &tile);
 	}
 
 
@@ -245,13 +234,17 @@ void drawScore(UINT8 x, UINT8 y, UINT8 offset, UINT16 value) {
 		set_win_tiles(x+3U, y, 1U, 1U, &tile);
 		
 	}
-	}
+}
 
 
 void updateScore(){
 	drawScore(10, 0, 0x5C, score);   
 }
 
+
+void updateHud(){
+
+}
 
 void drawPlayer(){	
 	
@@ -293,10 +286,8 @@ void drawPlayer(){
 void checkInput() {
 	oldjoystate = joystate;
 	joystate = joypad();	
-	//player_direction = 0x00;	
 	
 	
-		
 	
 	if(joypad()){
 		if (ISDOWN(J_LEFT)){			
@@ -369,10 +360,10 @@ void checkInput() {
 		if(CLICKED(J_B)){
 
 			newBubble();
-			if(score_stars < 4 ){
-				score+=5U;
+			
+				score+=100U;
 				updateScore();
-			}
+			
 			
 			
 		}
@@ -413,7 +404,7 @@ void stateGamePlay(){
 		waterMovement();
 		checkInput();
 		
-		if (ypos > 120u){ //menu
+		if (ypos > 136u){ //menu
 			ypos = 14u;
 		}
 		
@@ -422,10 +413,7 @@ void stateGamePlay(){
 		}
 		
 
-		ypos-= ysp;
-			
-
-				
+		ypos-= ysp;				
 		ypos+= gravity;
 
 		drawPlayer();
@@ -452,10 +440,7 @@ void stateGamePlay(){
 
 
 
-void stateGameBoot() {
-	
-		
-	
+void stateGameBoot() {	
     //STAT_REG = 8;
     SPRITES_8x16;    
     //disable_interrupts();
@@ -480,16 +465,12 @@ void stateGameBoot() {
 }
 		
 
-void stateGameLogo(){
+void stateGameLogo(){	
 	if(frame_counter == 0){	
 		HIDE_SPRITES;
 		HIDE_WIN;
-    	HIDE_BKG;
+    	HIDE_BKG;		
 		
-		//set_interrupts(LCD_IFLAG | VBL_IFLAG );    
-	    //SHOW_BKG;
-	    //SHOW_WIN;	
-		//HIDE_BKG;
 		SWITCH_ROM_MBC1(BANK_GRAPHICS);
 		set_bkg_data(0, oldrobotto_tile_count, &oldrobotto_tile_data);
 	    set_bkg_tiles(0, 0, 20, 18, &oldrobotto_map_data);
@@ -501,7 +482,66 @@ void stateGameLogo(){
 	if(frame_counter < 200u){
 		frame_counter+= 1u;
 	}else{
+		game_state = STATE_GAME_CONTEST;	
+		frame_counter = 0;		
+	}
+}
+
+void stateGameContest(){
+	if(frame_counter == 0){	
+		HIDE_SPRITES;
+		HIDE_WIN;
+    	HIDE_BKG;		
+
+
+
+		SWITCH_ROM_MBC1(BANK_GRAPHICS);
+		set_bkg_data(0, logo_2_a_tile_count, &logo_2_a_tile_data);
+	    set_bkg_tiles(0, 0, 20, 18, &logo_2_a_map_data);
+
+
+	    set_win_data(0x34, logo_2_b_tile_count, logo_2_b_tile_data);
+	    set_win_tiles(0, 0, 20, 9, logo_2_b_map_data);  
+
+    	set_sprite_data(0, 8, &year);
+		set_sprite_tile(0, 0);	
+		set_sprite_tile(1, 2);	
+		set_sprite_tile(2, 4);	
+		set_sprite_tile(3, 6);	
+		
+		move_sprite(0, 72, 84 );
+		move_sprite(1, 80, 84 );
+		move_sprite(2, 88, 84 );
+		move_sprite(3, 96, 84 );
+
+
+	    SWITCH_ROM_MBC1(0x01);
+	    SCX_REG = 72u;
+
+	    WY_REG = 144;
+		SHOW_BKG;
+		SHOW_WIN;
+		
+	}
+
+	if(frame_counter < 400u){
+		frame_counter+= 1u;
+		if(SCX_REG > 0){
+			SCX_REG-=1u;
+		}
+
+		if( WY_REG > 72){
+			WY_REG -= 1u;	
+		}else{
+			SHOW_SPRITES;
+		}
+		
+
+
+
+	}else{
 		game_state = STATE_GAME_INTRO;			
+		frame_counter = 0;
 	}
 }
 
@@ -552,8 +592,8 @@ void main() {
 				stateGameLogo();
 			break;
 
-			case STATE_GAME_LOGO2:
-				
+			case STATE_GAME_CONTEST:
+				stateGameContest();
 			break;
 			
 			case STATE_GAME_INTRO:
