@@ -9,18 +9,57 @@
 void save_score(){
 	ENABLE_RAM_MBC1;
 	mbc_ram_pointer = (UINT16 *)0xA000;
-	mbc_ram_pointer[0] = score;
+	mbc_ram_pointer[0] = hi_score;
+	
 	DISABLE_RAM_MBC1;
 }
 
 void load_score(){
 	ENABLE_RAM_MBC1;
-	mbc_ram_pointer = (	UINT16 *)0xa000;
-	score = mbc_ram_pointer[0];
+	mbc_ram_pointer = (	UINT16 *)0xA000;
+	hi_score = mbc_ram_pointer[0];
+	if( (hi_score < 1u) || (hi_score > 999u)  ){
+		hi_score = 1;
+	}
 	DISABLE_RAM_MBC1;
 }
 
+
+
+
 void drawScore(UINT8 x, UINT8 y, UINT8 offset, UINT16 value) {
+
+
+	if(score == 20u){
+		max_enemies_on_creen = 3;
+	}
+
+	if(score == 40u){
+		max_enemies_on_creen = 4;
+	}
+
+	if(score == 60u){
+		max_enemies_on_creen = 5;
+	}
+
+	if(score == 80u){
+		max_enemies_on_creen = 6;
+	}
+
+	if(score == 100u){
+		max_enemies_on_creen = 7;
+	}
+
+	if(score == 120u){
+		max_enemies_on_creen = 8;
+	}
+
+	if(score == 140u){
+		max_enemies_on_creen = 9;
+	}
+
+
+
 
 	if(value >= 100U) {
 		i = value / 100U;
@@ -38,6 +77,8 @@ void drawScore(UINT8 x, UINT8 y, UINT8 offset, UINT16 value) {
 		set_win_tiles(x+3U, y, 1U, 1U, &i);		
 	}	
 }
+
+
 
 
 void updateScore(){
@@ -82,6 +123,8 @@ void deactiveEnemie(UINT8 i, UINT8 move){
 	enemies_y[i] = 0;
 	enemies_active[i] = 0;
 	enemies_direction[i] = 0;
+	enemies_jumps[i] = 0;
+
 	//enemies_type[i] = 0;
 	if(move){
 		move_sprite(16+i , 0, 0);
@@ -183,23 +226,30 @@ void updateEnemies(){
 						case 3: //star
 							if(enemies_y[i] < 96){
 								enemies_direction[i] = 1;
+								enemies_jumps[i]+=1;
 								set_sprite_tile(16 + i, 0x6A );
 			     				set_sprite_tile(28 + i, 0x6C );										
 							}
 
 							if( enemies_y[i] > 136){
-								enemies_direction[i] = 0;
-								set_sprite_tile(16 + i, 0x66 );
-			     				set_sprite_tile(28 + i, 0x68 );											
+								if(enemies_jumps[i] < 3){
+									enemies_direction[i] = 0;
+									set_sprite_tile(16 + i, 0x66 );
+			     					set_sprite_tile(28 + i, 0x68 );											
+			     				}else{
+				     				deactiveEnemie(i);
+				     				break;
+				     			}
+								
 							}
 
 							if(enemies_direction[i]){
-				     			enemies_y[i] += enemies_speed;
-				     							     		
+				     			enemies_y[i] += enemies_speed;				     							     		
 				     		}else{		     		
-					     		enemies_y[i] -= enemies_speed;
-					     		
+					     		enemies_y[i] -= enemies_speed;					     		
 				     		}
+
+				     	
 
 
 
@@ -240,6 +290,7 @@ void newEnemie(){
 
 		     	case 2 : //fish
 			     	enemies_y[i] = 7;
+			     	enemies_jumps[i] = 0;
 			     	last_row = enemies_y[i];			     	
 			     	enemies_y[i] = enemies_y[i] << 4;
 
@@ -695,6 +746,111 @@ void stateGameIntro(){
 void stateGameTitle(){
 }
 
+void stateGameGameOver(){	
+
+	if( frame_counter == 0){
+		frame_counter = 1;
+		
+		HIDE_WIN;
+		HIDE_SPRITES;
+		set_sprite_data(0, 28, &game_over);
+		set_sprite_tile(0, 0); //G
+		set_sprite_tile(1, 2); //A
+		set_sprite_tile(2, 4); //M
+		set_sprite_tile(3, 6); //E
+
+		set_sprite_tile(4, 8); //O
+		set_sprite_tile(5, 10); //V
+		set_sprite_tile(6, 6); //E
+		set_sprite_tile(7, 12); //R
+
+		set_sprite_prop(0, 0x00); //G
+		set_sprite_prop(1, 0x00); //A
+		set_sprite_prop(2, 0x00); //M
+		set_sprite_prop(3, 0x00); //E
+		set_sprite_prop(4, 0x00); //O
+		set_sprite_prop(5, 0x00); //V
+		set_sprite_prop(6, 0x00); //E
+		set_sprite_prop(7, 0x00); //R
+
+		move_sprite(0, 56, 48);
+		move_sprite(1, 64, 48);
+		move_sprite(2, 72, 48);
+		move_sprite(3, 80, 48);
+		move_sprite(4, 92, 48);
+		move_sprite(5, 100, 48);
+		move_sprite(6, 108, 48);
+		move_sprite(7, 116, 48);
+
+
+		if (score > hi_score){		
+
+				hi_score = score;
+				save_score();
+			
+				set_sprite_tile(8, 0x16); //N
+				set_sprite_tile(9, 0x06); //E
+				set_sprite_tile(10, 0x18); //W				
+				set_sprite_tile(11, 0x12); //S
+				set_sprite_tile(12, 0x14); //C
+				set_sprite_tile(13, 8); //O
+				set_sprite_tile(14, 12); //R
+				set_sprite_tile(15, 6); //E
+				set_sprite_tile(16, 0x1A); //!
+				set_sprite_tile(16, 0x1A); //!
+
+				set_sprite_prop(8, 0x00); 
+				set_sprite_prop(9, 0x00); 
+				set_sprite_prop(10, 0x00); 
+				set_sprite_prop(11, 0x00); 
+				set_sprite_prop(12, 0x00); 
+				set_sprite_prop(13, 0x00); 
+				set_sprite_prop(14, 0x00); 
+				set_sprite_prop(15, 0x00); 
+				set_sprite_prop(16, 0x00); 
+
+
+				move_sprite(8, 56, 64);
+				move_sprite(9, 64, 64);
+				move_sprite(10, 72, 64);
+				move_sprite(11, 84, 64);
+				move_sprite(12, 92, 64);
+				move_sprite(13, 100, 64);
+				move_sprite(14, 108, 64);
+				move_sprite(15, 116, 64);			
+				move_sprite(16, 124, 64);			
+		}
+
+		
+
+		SHOW_SPRITES;
+		SHOW_WIN;
+
+
+	}
+	animateWater();	
+
+	if(joypad() & J_START){		
+		set_sprite_tile(11, 0x72); //S
+		set_sprite_tile(12, 0x72); //C
+		set_sprite_tile(13, 0x72); //O
+		set_sprite_tile(14, 0x72); //R
+		set_sprite_tile(15, 0x72); //E
+		set_sprite_tile(16, 0x72); //!
+
+		move_sprite(11, 0,0); //S
+		move_sprite(12, 0,0); //C
+		move_sprite(13, 0,0); //O
+		move_sprite(14, 0,0); //R
+		move_sprite(15, 0,0); //E
+		move_sprite(16, 0,0); //!
+
+		game_state = STATE_GAME_LOADGAMEPLAY;
+		frame_counter = 0;
+	}
+	
+}
+
 void stateGameLoadGameplay(){
 	/*config gameplay*/
 	if(!frame_counter){
@@ -731,6 +887,7 @@ void stateGameLoadGameplay(){
 		fx_jump_finished = 0x01;
 		player_direction = 0x06;
 		score = 0x00;
+		load_score();
 		max_enemies_on_creen = 2;
 
 

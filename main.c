@@ -50,11 +50,16 @@ void stateGamePlayerDie(){
 				player_direction = 0x06;									
 				lives-=1;
 				drawLives();
+				initBubbles();
 				initEnemies();
 				game_state = STATE_GAME_PLAY;		
 				frame_counter = 0;
 			}else{
-				game_state = STATE_GAME_LOADGAMEPLAY;	
+				initEnemies();
+				initBubbles();
+				xpos = 0;
+	    		ypos = 0;
+				game_state = STATE_GAME_OVER;	
 				frame_counter = 0;				
 			}		
 		}
@@ -229,7 +234,8 @@ void main() {
 			break;
 			
 			case STATE_GAME_OVER:
-				//game OVER
+				//game OVER				
+				stateGameGameOver();
 			break;
 		}
     }
