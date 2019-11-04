@@ -22,7 +22,7 @@
 #define MAX_BUBBLES_ON_SCREEN 0x03
 #define BUBBLE_SPEED 0x03
 
-#define MAX_ENEMIES_ON_SCREEN 0x01
+
 #define ENEMIES_SPEED 0x03
 
 
@@ -83,9 +83,11 @@ UINT8 player_delay;
 INT16 water_animation; /* does not work with UINT16 */
 UINT8 water_delay;
 
-/* bird*/
-UINT8 bird_animation; /* does not work with UINT16 */
-UINT8 bird_delay;
+/* enemie*/
+UINT8 enemie_animation_a; 
+UINT8 enemie_animation_b; 
+UINT8 enemie_animation_c; 
+UINT8 enemie_delay;
 
 /* player vars*/ 
 UINT8 xpos, ypos, ypos2; 
@@ -108,14 +110,20 @@ UINT8 bubbles_active[MAX_BUBBLES_ON_SCREEN];
 UINT8 bubbles_direction[MAX_BUBBLES_ON_SCREEN];
 
 /*enemies*/
-UINT8 enemies_x[12];
-UINT8 enemies_y[12];
-UINT8 enemies_active[12];
-UINT8 enemies_direction[12];
-UINT8 enemies_type[12];
+UINT8 max_enemies_on_creen; 
+UINT8 enemies_x[10];
+UINT8 enemies_y[10];
+UINT8 enemies_active[10];
+UINT8 enemies_direction[10];
+UINT8 enemies_type[10];
+UINT8 enemies_sprite[10];
 UINT8 enemies_speed;
 UINT8 used_enemies;
 UINT8 c;
+
+
+UINT8 wave_fish;
+UINT8 wave_star;
 
 
 
@@ -124,8 +132,9 @@ UINT8 c;
 /* ram*/
 UINT16 *mbc_ram_pointer; 
 UINT8 random_number; 
-UINT8 old_random_number; 
 UINT16 random_seed; 
 
-
+UINT8 last_row;
+UINT8 delay_new_enemie;
+UINT8 delay_dead_enemie;
 

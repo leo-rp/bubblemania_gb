@@ -118,11 +118,7 @@ void stateGamePlay(){
 
 			if(ISDOWN(J_B)){
 				//newBubble();			
-				if(score != 999u){
-					score+=1U;
-					//updateScore();	
-
-				}							
+											
 			}	
 							
 			if(CLICKED(J_B)){
@@ -151,15 +147,19 @@ void stateGamePlay(){
 		movePlayer();
 
 
-		updateBubbles();
+		updateBubbles();		
+
 		updateEnemies();
-
-		//collideBubbles();
-
 		collidePlayer();
+		
 
-
-		newEnemie();
+		if(delay_new_enemie > 40){
+			newEnemie();
+			delay_new_enemie = 0;	
+		}else{
+			delay_new_enemie+= 1;	
+		}
+		
 
 
 		
@@ -174,8 +174,9 @@ void stateGamePlay(){
 	
 	
 	animatePlayer();		
+	animateEnemies();		
 	animateWater();
-	//animateBird();
+	
 	
 		
 }
