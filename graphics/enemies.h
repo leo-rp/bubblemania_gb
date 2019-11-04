@@ -1,8 +1,8 @@
 /*
 
- BUBBLE.C
+ ENEMIES.H
 
- Tile Source File.
+ Include File.
 
  Info:
   Form                 : All tiles as one unit.
@@ -10,7 +10,7 @@
   Compression          : None.
   Counter              : None.
   Tile size            : 8 x 8
-  Tiles                : 4 to 5
+  Tiles                : 0 to 31
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -22,13 +22,10 @@
 
 */
 
-/* Start of tile array. */
-unsigned char bubble[] =
-{
-  0x00,0x00,0x00,0x00,0x00,0x00,0x3C,0x3C,
-  0x42,0x7E,0x91,0xFF,0xA1,0xFF,0x81,0xFF,
-  0x85,0xFB,0x89,0xF7,0x42,0x7E,0x3C,0x3C,
-  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
-};
 
-/* End of BUBBLE.C */
+/* Bank of tiles. */
+#define enemiesBank 0
+/* Start of tile array. */
+extern unsigned char enemies[];
+
+/* End of ENEMIES.H */
