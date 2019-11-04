@@ -2,6 +2,24 @@
 #include "defines.h"
 
 
+void PlaySoundJump(){
+	NR10_REG = 0x77;
+	NR11_REG = 0x41;
+	NR12_REG = 0x82;
+	NR13_REG = 0xC2;
+	NR14_REG = 0xC6;
+}
+
+void PlaySoundShoot(){
+	NR10_REG = 0x80;
+	NR11_REG = 0xBF;
+	NR12_REG = 0x10;
+	NR13_REG = 0xA0;
+	NR14_REG = 0xFF;
+}
+
+
+
 /***********************************/
 /************* SCORE *************/
 /***********************************/
@@ -232,7 +250,7 @@ void updateEnemies(){
 							}
 
 							if( enemies_y[i] > 136){
-								if(enemies_jumps[i] < 3){
+								if(enemies_jumps[i] < 1){
 									enemies_direction[i] = 0;
 									set_sprite_tile(16 + i, 0x66 );
 			     					set_sprite_tile(28 + i, 0x68 );											
@@ -528,6 +546,7 @@ void newBubble(){
 		     bubbles_active[i] = 1;
 		     used_bubbles+=1U;
 		     bubbles_direction[i] = player_direction;
+		     PlaySoundShoot();
 		     if(bubbles_direction[i] == 0x06){
 		     	bubbles_x[i] = xpos + 16;
 		     }else{
@@ -609,13 +628,7 @@ void updateBubbles(){
 /****************************************/
 /************* GAME EFECTS *************/
 /****************************************/
-void PlaySoundJump(){
-	NR10_REG = 0x77;
-	NR11_REG = 0x41;
-	NR12_REG = 0x82;
-	NR13_REG = 0xC2;
-	NR14_REG = 0xC6;
-}
+
 
 void animateWater(){
 	if(water_delay > 9u){
@@ -661,7 +674,7 @@ void stateGameBoot() {
 	
 	//game_state = STATE_GAME_LOGO;
 	random_seed = DIV_REG;
-	game_state = STATE_GAME_LOADGAMEPLAY;
+	game_state = STATE_GAME_LOGO;
 }
 	
 /*developer logo*/	
@@ -730,7 +743,7 @@ void stateGameContest(){
 			SHOW_SPRITES;
 		}
 	}else{
-		game_state = STATE_GAME_LOADGAMEPLAY;			
+		game_state = STATE_GAME_TITLE;			
 		frame_counter = 0;
 	}
 }
@@ -740,10 +753,33 @@ void stateGameContest(){
 /**/
 void stateGameIntro(){
 	game_state = STATE_GAME_TITLE;
+	frame_counter = 0;
 }
 
 /*GAME TTILE*/
 void stateGameTitle(){
+	if(frame_counter == 0){
+		HIDE_BKG;
+		HIDE_WIN;
+		HIDE_SPRITES;
+		set_bkg_data(0, bubblemania_tile_count, bubblemania_tile_data);
+		set_bkg_tiles(0, 0, 20, 18, bubblemania_map_data); 
+		SHOW_BKG;
+		frame_counter = 1;
+		CP_LoadMusic(3, 0, 0 );	
+		CP_Play();
+	}
+
+		
+
+
+	if(joypad() & J_START){
+		game_state = STATE_GAME_LOADGAMEPLAY;
+		frame_counter = 0;
+	}
+	
+	
+
 }
 
 void stateGameGameOver(){	
@@ -872,8 +908,8 @@ void stateGameLoadGameplay(){
 		OBP0_REG = 0xC4; //11 00 01 00
 		
 		SWITCH_ROM_MBC1(0x01);
-		CP_LoadMusic(3, 0, 0 );	
-		CP_Play();
+		//CP_LoadMusic(3, 0, 0 );	
+		//CP_Play();
 
 		lives = 3u;
 		gravity = 0x02;
