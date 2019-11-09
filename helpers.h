@@ -546,7 +546,7 @@ void newBubble(){
 		     bubbles_active[i] = 1;
 		     used_bubbles+=1U;
 		     bubbles_direction[i] = player_direction;
-		     PlaySoundShoot();
+		     //PlaySoundShoot();
 		     if(bubbles_direction[i] == 0x06){
 		     	bubbles_x[i] = xpos + 16;
 		     }else{
@@ -774,6 +774,7 @@ void stateGameTitle(){
 
 
 	if(joypad() & J_START){
+		CP_Pause();
 		game_state = STATE_GAME_LOADGAMEPLAY;
 		frame_counter = 0;
 	}
@@ -936,6 +937,7 @@ void stateGameLoadGameplay(){
 		movePlayer();
 		initBubbles();
 		initEnemies();
+	 	CP_Play();
 
 		SHOW_BKG;
     	SHOW_WIN;

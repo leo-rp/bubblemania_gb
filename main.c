@@ -92,16 +92,10 @@ void stateGamePlay(){
 				if(xpos != 136u){
 					xpos+= 0x02;	
 				}	
-			}
+			}		
 			
-			if (ISDOWN(J_DOWN)){			
-				ypos+= 2;
-			}
 
-			if (ISDOWN(J_START)){
-				save_score();
-			}
-
+			
 			if (ISDOWN(J_SELECT)){
 				//load_score();
 				game_state = STATE_GAME_PLAYERDIE;
@@ -128,8 +122,6 @@ void stateGamePlay(){
 							
 			if(CLICKED(J_B)){
 				newBubble();
-				
-
 				sprite_index = 32u;				
 				
 			}
