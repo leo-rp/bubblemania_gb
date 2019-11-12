@@ -103,7 +103,7 @@ void stateGamePlay(){
 			
 			
 			if(CLICKED(J_A)){				
-				PlaySoundJump();
+				playSoundJump();
 			}
 
 			if (ISDOWN(J_A)){ //JUMP
@@ -122,6 +122,7 @@ void stateGamePlay(){
 							
 			if(CLICKED(J_B)){
 				newBubble();
+				//playSoundShoot();
 				sprite_index = 32u;				
 				
 			}
@@ -190,9 +191,7 @@ void main() {
 				stateGameLogo();
 			break;
 
-			case STATE_GAME_CONTEST:
-				stateGameContest();
-			break;
+			
 			
 			case STATE_GAME_INTRO:
 				//game intro

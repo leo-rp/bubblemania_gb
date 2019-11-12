@@ -2,7 +2,8 @@
 #include "defines.h"
 
 
-void PlaySoundJump(){
+
+void playSoundJump(){
 	NR10_REG = 0x77;
 	NR11_REG = 0x41;
 	NR12_REG = 0x82;
@@ -10,12 +11,18 @@ void PlaySoundJump(){
 	NR14_REG = 0xC6;
 }
 
-void PlaySoundShoot(){
-	NR10_REG = 0x80;
+void playSoundShoot(){
+	/*NR10_REG = 0x80;
 	NR11_REG = 0xBF;
 	NR12_REG = 0x10;
 	NR13_REG = 0xA0;
-	NR14_REG = 0xFF;
+	NR14_REG = 0xFF;*/
+
+	NR10_REG = 0x77;
+	NR11_REG = 0x41;
+	NR12_REG = 0x82;
+	NR13_REG = 0xC2;
+	NR14_REG = 0xC6;
 }
 
 
@@ -546,7 +553,7 @@ void newBubble(){
 		     bubbles_active[i] = 1;
 		     used_bubbles+=1U;
 		     bubbles_direction[i] = player_direction;
-		     //PlaySoundShoot();
+		     playSoundShoot();
 		     if(bubbles_direction[i] == 0x06){
 		     	bubbles_x[i] = xpos + 16;
 		     }else{
@@ -659,8 +666,7 @@ void animateWater(){
 
 /* game boot*/
 void stateGameBoot() {	
-    //STAT_REG = 8;
-    
+    //STAT_REG = 8;    
     disable_interrupts();
     SPRITES_8x16;    
     //add_LCD(LCD_Interrupt);
@@ -673,6 +679,7 @@ void stateGameBoot() {
 	}*/
 	
 	//game_state = STATE_GAME_LOGO;
+	//turnOnSound();
 	random_seed = DIV_REG;
 	game_state = STATE_GAME_LOGO;
 }
@@ -694,57 +701,8 @@ void stateGameLogo(){
 	if(frame_counter != 300u){
 		frame_counter+= 1u;
 	}else{
-		game_state = STATE_GAME_CONTEST;	
+		game_state = STATE_GAME_TITLE;	
 		frame_counter = 0;		
-	}
-}
-
-
-/*contest logo*/	
-void stateGameContest(){
-	if(!frame_counter){	
-		HIDE_SPRITES;
-		HIDE_WIN;
-    	HIDE_BKG;	
-		SWITCH_ROM_MBC1(BANK_GRAPHICS);
-		set_bkg_data(0, logo_2_a_tile_count, &logo_2_a_tile_data);
-	    set_bkg_tiles(0, 0, 20, 18, &logo_2_a_map_data);
-
-	    set_win_data(0x34, logo_2_b_tile_count, logo_2_b_tile_data);
-	    set_win_tiles(0, 0, 20, 9, logo_2_b_map_data);  
-
-    	set_sprite_data(0, 8, &year);
-		set_sprite_tile(0, 0);	
-		set_sprite_tile(1, 2);	
-		set_sprite_tile(2, 4);	
-		set_sprite_tile(3, 6);	
-		
-		move_sprite(0, 72, 84 );
-		move_sprite(1, 80, 84 );
-		move_sprite(2, 88, 84 );
-		move_sprite(3, 96, 84 );
-
-	    SWITCH_ROM_MBC1(0x01);
-	    SCX_REG = 72u;
-	    WY_REG = 144;
-		SHOW_BKG;
-		SHOW_WIN;		
-	}
-
-	if(frame_counter != 300u){
-		frame_counter+= 1u;
-		if(SCX_REG > 0){
-			SCX_REG-=1u;
-		}
-
-		if( WY_REG > 72){
-			WY_REG -= 1u;	
-		}else{
-			SHOW_SPRITES;
-		}
-	}else{
-		game_state = STATE_GAME_TITLE;			
-		frame_counter = 0;
 	}
 }
 
@@ -762,6 +720,7 @@ void stateGameTitle(){
 		HIDE_BKG;
 		HIDE_WIN;
 		HIDE_SPRITES;
+		SWITCH_ROM_MBC1(BANK_GRAPHICS);
 		set_bkg_data(0, bubblemania_tile_count, bubblemania_tile_data);
 		set_bkg_tiles(0, 0, 20, 18, bubblemania_map_data); 
 		SHOW_BKG;
@@ -770,17 +729,11 @@ void stateGameTitle(){
 		CP_Play();
 	}
 
-		
-
-
 	if(joypad() & J_START){
 		CP_Pause();
 		game_state = STATE_GAME_LOADGAMEPLAY;
 		frame_counter = 0;
 	}
-	
-	
-
 }
 
 void stateGameGameOver(){	
@@ -790,6 +743,7 @@ void stateGameGameOver(){
 		
 		HIDE_WIN;
 		HIDE_SPRITES;
+		SWITCH_ROM_MBC1(BANK_GRAPHICS);
 		set_sprite_data(0, 28, &game_over);
 		set_sprite_tile(0, 0); //G
 		set_sprite_tile(1, 2); //A
@@ -856,13 +810,10 @@ void stateGameGameOver(){
 				move_sprite(14, 108, 64);
 				move_sprite(15, 116, 64);			
 				move_sprite(16, 124, 64);			
-		}
-
-		
+		}		
 
 		SHOW_SPRITES;
 		SHOW_WIN;
-
 
 	}
 	animateWater();	
@@ -909,8 +860,8 @@ void stateGameLoadGameplay(){
 		OBP0_REG = 0xC4; //11 00 01 00
 		
 		SWITCH_ROM_MBC1(0x01);
-		//CP_LoadMusic(3, 0, 0 );	
-		//CP_Play();
+		CP_LoadMusic(3, 0, 0 );	
+		CP_Play();
 
 		lives = 3u;
 		gravity = 0x02;
