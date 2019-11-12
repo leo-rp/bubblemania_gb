@@ -10,26 +10,32 @@ CARILLON PLAYER FOR GBDK
 //Carillon Player Functions
 UINT8 CP_MusBank = 0;
 UINT8 CP_SamBank = 0;
+UINT8 CP_FxBank = 0;
 UINT8 CP_ON = 0;
 void CP_Init(); 
 void CP_LoadSong(); 
 void CP_SelectSong(UINT8 song); 
+
 void CP_UpdateSong();  
 void CP_UpdateSamp(); 
+void CP_UpdateFx(); 
 void CP_StopSong(); 
 void CP_Mute_Chan(UINT8 chan);
 void CP_Reset_Chan(UINT8 chan);
 void CP_SND_OFF();
 void CP_SND_ON();
 void CP_Pause();
+void CP_PlayFx(UINT8 fx);
 
 
 //bank = rom bank where the song is stored
 //sbank = rom bank where the samples are stored (0 = no sample)
+//fxbak = rom bank where the fx are stored 0 = no fx
 //song = song number
-void CP_LoadMusic(UINT8 bank,UINT8 sbank,int song){
+void CP_LoadMusic(UINT8 bank,UINT8 sbank, UINT8 fbank, int song){
 	CP_MusBank = bank;
 	CP_SamBank = sbank;
+	CP_FxBank = fbank;
 	SWITCH_ROM_MBC1(bank);
 	CP_Init();
 	CP_LoadSong();
@@ -45,7 +51,15 @@ void CP_UpdateMusic(){
 			CP_UpdateSamp();
 		}
 	}
+
+	if(CP_FxBank != 0){
+		SWITCH_ROM_MBC1(CP_FxBank);
+		CP_UpdateFx();
+	}
 }
+
+
+
 
 void CP_StopMusic(){
 	if (CP_ON == 1){
@@ -82,4 +96,10 @@ void CP_SND_ON(){
 	*(UBYTE*)0xFF25 = 0x33; //balance
 	*(UBYTE*)0xFF26 = 0xFB; //sound
 	
+}
+
+/*fx*/
+void CP_PlayFx(UINT8 fx){
+	//CP_loadFX(fx);
+	CP_loadFX(fx);
 }

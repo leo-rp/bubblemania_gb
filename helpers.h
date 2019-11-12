@@ -11,19 +11,7 @@ void playSoundJump(){
 	NR14_REG = 0xC6;
 }
 
-void playSoundShoot(){
-	/*NR10_REG = 0x80;
-	NR11_REG = 0xBF;
-	NR12_REG = 0x10;
-	NR13_REG = 0xA0;
-	NR14_REG = 0xFF;*/
 
-	NR10_REG = 0x77;
-	NR11_REG = 0x41;
-	NR12_REG = 0x82;
-	NR13_REG = 0xC2;
-	NR14_REG = 0xC6;
-}
 
 
 
@@ -553,7 +541,7 @@ void newBubble(){
 		     bubbles_active[i] = 1;
 		     used_bubbles+=1U;
 		     bubbles_direction[i] = player_direction;
-		     playSoundShoot();
+		     //playSoundShoot();
 		     if(bubbles_direction[i] == 0x06){
 		     	bubbles_x[i] = xpos + 16;
 		     }else{
@@ -646,7 +634,7 @@ void animateWater(){
 			memcpy(0x95A0, &water[water_animation + 16u ], SPRITE_LENGTH);
 			memcpy(0x9590, &water[water_animation + 32u ], SPRITE_LENGTH);
 			memcpy(0x95B0, &water[water_animation + 48u ], SPRITE_LENGTH);
-			SWITCH_ROM_MBC1(0x01);
+			
 			water_animation+= 64u;			
 		}else{
 			water_animation = 0;
@@ -693,7 +681,7 @@ void stateGameLogo(){
 		SWITCH_ROM_MBC1(BANK_GRAPHICS);
 		set_bkg_data(0, oldrobotto_tile_count, &oldrobotto_tile_data);
 	    set_bkg_tiles(0, 0, 20, 18, &oldrobotto_map_data);
-	    SWITCH_ROM_MBC1(0x01);
+	  
 		SHOW_BKG;
 		SHOW_SPRITES;
 	}
@@ -725,7 +713,7 @@ void stateGameTitle(){
 		set_bkg_tiles(0, 0, 20, 18, bubblemania_map_data); 
 		SHOW_BKG;
 		frame_counter = 1;
-		CP_LoadMusic(3, 0, 0 );	
+		CP_LoadMusic(BANK_MUSIC, BANK_SMUSIC, BANK_FMUSIC, 0 );		
 		CP_Play();
 	}
 
@@ -859,9 +847,10 @@ void stateGameLoadGameplay(){
 	    move_win(7u, 136u);	
 		OBP0_REG = 0xC4; //11 00 01 00
 		
-		SWITCH_ROM_MBC1(0x01);
-		CP_LoadMusic(3, 0, 0 );	
+		//SWITCH_ROM_MBC1(0x01);
+		CP_LoadMusic(BANK_MUSIC, BANK_SMUSIC, BANK_FMUSIC, 0 );	
 		CP_Play();
+		//CP_FxPlay(1u);
 
 		lives = 3u;
 		gravity = 0x02;
@@ -901,4 +890,8 @@ void stateGameLoadGameplay(){
 		game_state = STATE_GAME_PLAY;	
 		frame_counter = 0;		
 	}
+}
+
+void playSoundShoot(){
+	CP_PlayFx(4);	
 }

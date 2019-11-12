@@ -12,7 +12,9 @@
 		.globl	_CP_StopSong
 		.globl	_CP_Mute_Chan
 		.globl	_CP_Reset_Chan
-		
+		.globl  _CP_UpdateFx
+		.globl  _CP_LoadFx
+
 .area	_CODE
 	
 .Player_Initialize		=	0x4000
@@ -23,6 +25,14 @@
 .Player_SampleUpdate	=	0x4000
 .LY						=	0x44		; LCDC Y-coordinate
 
+
+; Included in every SoundFX Bank:
+
+.SoundFX_Trig            =     0x4000   ; a = sound FX number (0 - 59)
+.SoundFX_Stop            =     0x4003
+.SoundFX_Update          =     0x4006   ; call once every frame
+
+
 _CP_init:
 		jp		.Player_Initialize		; Initialize
 		ret
@@ -32,7 +42,13 @@ _CP_LoadSong:
 		push	BC
 		call	.Player_MusicStart		; Start music playing
 		pop		BC
-		ret		
+		ret	
+
+_CP_LoadFx:	
+		push	BC
+		ld    a, BC
+		call  .SoundFX_Trig           ; Trig sound FX number stored on A
+		
 
 _CP_SelectSong:		
 		LDA		HL,2(SP)				; Skip return address
@@ -43,6 +59,8 @@ _CP_SelectSong:
 _CP_UpdateSong:
         jp		.Player_MusicUpdate		; Call this once a frame
 
+_CP_UpdateFx:
+				.SoundFX_Update 		; Call this once a frame
 
 _CP_UpdateSamp:		;sample player (GOOD)
         ld      c,#16					; Waiting

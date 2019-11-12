@@ -123,7 +123,9 @@ void stateGamePlay(){
 			if(CLICKED(J_B)){
 				newBubble();
 				//playSoundShoot();
-				sprite_index = 32u;				
+				CP_PlayFx(4);
+				sprite_index = 32u;	
+							
 				
 			}
 		}	
@@ -185,14 +187,13 @@ void main() {
 	while (1) {		
 		wait_vbl_done();
 		CP_UpdateMusic();
+		
 		switch (game_state){
 
 			case STATE_GAME_LOGO:
 				stateGameLogo();
 			break;
 
-			
-			
 			case STATE_GAME_INTRO:
 				//game intro
 
