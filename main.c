@@ -54,7 +54,9 @@ void stateGamePlayerDie(){
 				initEnemies();
 				game_state = STATE_GAME_PLAY;		
 				frame_counter = 0;
+				FX_Play(7);
 			}else{
+
 				initEnemies();
 				initBubbles();
 				xpos = 0;
@@ -98,12 +100,13 @@ void stateGamePlay(){
 			
 			if (ISDOWN(J_SELECT)){
 				//load_score();
-				game_state = STATE_GAME_PLAYERDIE;
+				//game_state = STATE_GAME_PLAYERDIE;
+				FX_Stop();
 			}
 			
 			
 			if(CLICKED(J_A)){				
-				playSoundJump();
+				FX_Play(6);
 			}
 
 			if (ISDOWN(J_A)){ //JUMP
@@ -123,7 +126,7 @@ void stateGamePlay(){
 			if(CLICKED(J_B)){
 				newBubble();
 				//playSoundShoot();
-				CP_PlayFx(4);
+				FX_Play(1);
 				sprite_index = 32u;	
 							
 				
@@ -187,6 +190,7 @@ void main() {
 	while (1) {		
 		wait_vbl_done();
 		CP_UpdateMusic();
+		FX_Update();
 		
 		switch (game_state){
 

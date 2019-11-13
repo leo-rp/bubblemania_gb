@@ -4,6 +4,7 @@
 #include <rand.h> 
 /*audio*/
 #include "libs/carillon_funcs.c"
+#include "libs/fx_hammer_funcs.c"
 
 
 #define STATE_GAME_BOOT 0x00
@@ -21,7 +22,7 @@
 #define BANK_GRAPHICS 0x01
 #define BANK_MUSIC 0x02
 #define BANK_SMUSIC 0x00
-#define BANK_FMUSIC 0x03
+#define BANK_FX 0x03
 #define MAX_BUBBLES_ON_SCREEN 0x03
 #define BUBBLE_SPEED 0x03
 

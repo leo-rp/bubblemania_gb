@@ -4,11 +4,12 @@
 
 
 void playSoundJump(){
-	NR10_REG = 0x77;
+	/*NR10_REG = 0x77;
 	NR11_REG = 0x41;
 	NR12_REG = 0x82;
 	NR13_REG = 0xC2;
-	NR14_REG = 0xC6;
+	NR14_REG = 0xC6;*/
+
 }
 
 
@@ -169,7 +170,8 @@ void collidePlayer(){
 	if(used_enemies){
 		for( i = 0; i != used_enemies; i+=1u){
 			c = collideEenemie(i, xpos+ 4, ypos + 4, 24u, 24u );
-			if(c){ //collision				
+			if(c){ //collision		
+				FX_Play(5);		
 
 				if(enemies_direction[i]){
 					set_sprite_tile(16 + i, 0x52 );
@@ -565,6 +567,7 @@ void updateBubbles(){
 						for( i = 0; i != used_enemies; i+=1u){
 							c = collideEenemie(i, bubbles_x[j], bubbles_y[j] + 4, 8u, 9u );
 							if(c){ //collision
+								FX_Play(8);		
 								if(enemies_direction[i]){
 									set_sprite_tile(16 + i, 0x52 );
 									set_sprite_tile(28 + i, 0x54 );		
@@ -670,6 +673,7 @@ void stateGameBoot() {
 	//turnOnSound();
 	random_seed = DIV_REG;
 	game_state = STATE_GAME_LOGO;
+	FX_Bank(BANK_FX);
 }
 	
 /*developer logo*/	
@@ -713,12 +717,14 @@ void stateGameTitle(){
 		set_bkg_tiles(0, 0, 20, 18, bubblemania_map_data); 
 		SHOW_BKG;
 		frame_counter = 1;
-		CP_LoadMusic(BANK_MUSIC, BANK_SMUSIC, BANK_FMUSIC, 0 );		
+		CP_LoadMusic(BANK_MUSIC, BANK_SMUSIC, 0 );		
 		CP_Play();
 	}
 
 	if(joypad() & J_START){
+		//FX_Play(3);
 		CP_Pause();
+		
 		game_state = STATE_GAME_LOADGAMEPLAY;
 		frame_counter = 0;
 	}
@@ -821,6 +827,7 @@ void stateGameGameOver(){
 		move_sprite(15, 0,0); //E
 		move_sprite(16, 0,0); //!
 
+		FX_Play(1);
 		game_state = STATE_GAME_LOADGAMEPLAY;
 		frame_counter = 0;
 	}
@@ -848,7 +855,7 @@ void stateGameLoadGameplay(){
 		OBP0_REG = 0xC4; //11 00 01 00
 		
 		//SWITCH_ROM_MBC1(0x01);
-		CP_LoadMusic(BANK_MUSIC, BANK_SMUSIC, BANK_FMUSIC, 0 );	
+		CP_LoadMusic(BANK_MUSIC, BANK_SMUSIC, 0 );	
 		CP_Play();
 		//CP_FxPlay(1u);
 
@@ -892,6 +899,3 @@ void stateGameLoadGameplay(){
 	}
 }
 
-void playSoundShoot(){
-	CP_PlayFx(4);	
-}
