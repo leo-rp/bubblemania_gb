@@ -22,9 +22,9 @@ void FX_UpdateFx();
 */
 
 void FX_SND_ON(){
-	NR50_REG = 0xFF; 
-	NR51_REG = 0x28;
-	NR52_REG = 0xFA;
+	NR52_REG = 0x80;
+	NR51_REG = 0x11;
+	NR50_REG = 0x77;
 }
 
 /*--------------------------------------------------------------------------------------; 
@@ -33,6 +33,7 @@ void FX_SND_ON(){
 */
 void FX_Bank(UINT8 bank){
 	fxBank = bank;	
+	//FX_SND_ON(); //Use it if You aren't using Carillion Player
 }
 
 /*--------------------------------------------------------------------------------------
@@ -41,8 +42,7 @@ void FX_Bank(UINT8 bank){
 ;----------------------------------------------------------------------------------------
 */
 
-void FX_Play(UINT8 fx){	
-	//FX_SND_ON(); //Use it if You aren't using Carillion Player
+void FX_Play(UINT8 fx){		
 	FX_TrigFx(fx);  
 
 }
