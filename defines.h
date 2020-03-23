@@ -1,31 +1,24 @@
-#include <gb/gb.h>
-#include <string.h>
-#include <stdio.h> 
-#include <rand.h> 
-/*audio*/
-#include "libs/carillon_funcs.c"
-#include "libs/fx_hammer_funcs.c"
 
 
-#define STATE_GAME_BOOT 0x00
-#define STATE_GAME_INTRO 0x01
-#define STATE_GAME_TITLE 0x02
-#define STATE_GAME_PLAY  0x03
-#define STATE_GAME_PAUSE 0x04
-#define STATE_GAME_OVER  0x05
 
-#define STATE_GAME_LOGO  0x06
+#define GAMESTATE_BOOT 0x00
+#define GAMESTATE_INTRO 0x01
+#define GAMESTATE_TITLE 0x02
+#define GAMESTATE_PLAY  0x03
+#define GAMESTATE_PAUSE 0x04
+#define GAMESTATE_OVER  0x05
 
-#define STATE_GAME_LOADGAMEPLAY  0x08
-#define STATE_GAME_PLAYERDIE 0x09
+#define GAMESTATE_LOGO  0x06
+
+#define GAMESTATE_LOAD_GAMEPLAY  0x08
+#define GAMESTATE_PLAYER_DIE 0x09
 
 #define BANK_GRAPHICS 0x01
 #define BANK_MUSIC 0x02
 #define BANK_SMUSIC 0x00
 #define BANK_FX 0x03
 #define MAX_BUBBLES_ON_SCREEN 0x03
-#define BUBBLE_SPEED 0x03
-
+#define BUBBLE_SPEED 0x02
 
 #define ENEMIES_SPEED 0x03
 
@@ -35,8 +28,7 @@
 #define CLICKED(x) ((joystate & x) && (joystate & x) != (oldjoystate & x))
 #define RELEASED(x) (!(joystate & x) && (joystate & x) != (oldjoystate & x))
 #define ISDOWN(x) (joystate & (x))
-
-
+#define GRAVITY 0x01;
 
 extern const int oldrobotto_tile_count;
 extern const unsigned char oldrobotto_map_data[];
@@ -66,10 +58,10 @@ extern const int bubblemania_tile_data_size;
 extern const int bubblemania_tile_count;
 
 extern const unsigned char game_over;
-extern const unsigned char player[];
-extern const unsigned char bubble[];
+extern const unsigned char player_sprites[];
+extern const unsigned char bubble_sprites[];
 extern const unsigned char water[];
-extern const unsigned char enemies[];
+extern const unsigned char enemies_sprites[];
 
 //extern const unsigned char game_over[];
 
@@ -77,8 +69,10 @@ extern const unsigned char enemies[];
 UINT8 i;
 UINT8 j;
 
+
+
 /*game vars*/
-UINT8 game_state;
+UINT8 GAMESTATE;
 UINT8 game_play_counter;
 
 UINT16 frame_counter; //delays
@@ -87,9 +81,7 @@ UINT16 score;
 UINT16 hi_score;
 
 
-/* player*/
-UINT8 player_animation; /* does not work with UINT16 */
-UINT8 player_delay;
+
 
 
 /* water*/
@@ -102,35 +94,20 @@ UINT8 enemie_animation_b;
 UINT8 enemie_animation_c; 
 UINT8 enemie_delay;
 
-/* player vars*/ 
-UINT8 xpos, ypos, ypos2; 
-UINT8 ysp, xsp, gravity, jump_force, speed_movement, player_direction;
-UINT8 lives; 
-UINT8 used_bubbles; 
 
-UINT8 distance;
 
 /*fx*/
 UINT8 fx_jump_finished;
 
 /*sprite vars*/
-UINT8 sflip, sprite_index;
+
 
 /*bubbles*/
-UINT8 bubbles_x[MAX_BUBBLES_ON_SCREEN];
-UINT8 bubbles_y[MAX_BUBBLES_ON_SCREEN];
-UINT8 bubbles_active[MAX_BUBBLES_ON_SCREEN];
-UINT8 bubbles_direction[MAX_BUBBLES_ON_SCREEN];
+
 
 /*enemies*/
 UINT8 max_enemies_on_creen; 
-UINT8 enemies_x[10];
-UINT8 enemies_y[10];
-UINT8 enemies_active[10];
-UINT8 enemies_direction[10];
-UINT8 enemies_type[10];
-UINT8 enemies_sprite[10];
-UINT8 enemies_jumps[10];
+
 UINT8 enemies_speed;
 UINT8 used_enemies;
 UINT8 c;
@@ -153,3 +130,19 @@ UINT8 delay_dead_enemie;
 
 
 
+
+struct Player player;  
+struct Bubble bubbles[MAX_BUBBLES_ON_SCREEN];
+struct Enemie enemies[10];
+
+struct Bubble *p_bubble; //pointer
+struct Enemie *p_enemie; //pointer
+
+
+	UINT8 enemies_x[10];
+UINT8 enemies_y[10];
+UINT8 enemies_active[10];
+UINT8 enemies_direction[10];
+UINT8 enemies_type[10];
+UINT8 enemies_sprite[10];
+UINT8 enemies_jumps[10];

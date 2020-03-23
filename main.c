@@ -1,25 +1,34 @@
 
-#include "helpers.h"
+#include <gb/gb.h>
+#include <string.h>
+#include <stdio.h> 
+#include <rand.h> 
+/*audio*/
+#include "libs/carillon_funcs.c"
+#include "libs/fx_hammer_funcs.c"
+
+#include "player.h"
+#include "bubbles.h"
+#include "defines.h"
+#include "enemies.h"
+
+#include "enemies.c"
+#include "score.c"
+#include "bubbles.c"
+#include "player.c"
 
 
-void drawLives(){
-	set_win_tiles(0, 0, 1U, 1U, &hub_no_element);
-	set_win_tiles(1, 0, 1U, 1U, &hub_no_element);		
-	set_win_tiles(2, 0, 1U, 1U, &hub_no_element);
-	
-	for(i = 0; i < lives; i+=1u){				
-		set_win_tiles(i, 0, 1U, 1U, &hub_live);
-	}	
-}
+
+#include "game_states.c"
+
+
 
 
 
 void stateGamePlayerDie(){
-
+	player.is_dying = 1u;
 	if( !frame_counter){
-		sprite_index = 48u;			
-		drawPlayer();
-		
+		player.sprite_index = 48u;
 	}
 	
 
@@ -27,45 +36,36 @@ void stateGamePlayerDie(){
 		frame_counter+=1u;		
 		
 	}else{						
-		if(ypos < 144){
-			initBubbles();
-			ypos+=1;		
-			movePlayer();
-			sprite_index = 64u;
-			drawPlayer();
+		if(player.y < 144){			
+			player.y+=1;					
+			player.sprite_index = 64u;			
 			
 		}else{		
-			ypos = 14u;
-			sprite_index = 0;	
+			player.y = 14u;
+			player.sprite_index = 0;			
 			
-			distance = 0;
 			
-			if(lives){							
-				xpos = 0x58;
-	    		ypos = 0x10;
-				ysp = 0x00;
-				xsp = 0x00;
-				sflip = 0x00;
-				fx_jump_finished = 0x01;
-				player_direction = 0x06;									
-				lives-=1;
-				drawLives();
+			if(player.lives){
+				fx_jump_finished = 0x01;				
+				initPlayer();
 				initBubbles();
 				initEnemies();
-				game_state = STATE_GAME_PLAY;		
+				GAMESTATE = GAMESTATE_PLAY;		
 				frame_counter = 0;
 				FX_Play(7);
 			}else{
 
 				initEnemies();
 				initBubbles();
-				xpos = 0;
-	    		ypos = 0;
-				game_state = STATE_GAME_OVER;	
+				player.x = 0;
+	    		player.y = 0;
+				GAMESTATE = GAMESTATE_OVER;	
 				frame_counter = 0;				
 			}		
 		}
 	}
+
+	updatePlayer();
 
 }
 
@@ -74,33 +74,25 @@ void stateGamePlay(){
 	oldjoystate = joystate;
 	joystate = joypad();
 
-	if (ypos < 130u){ //menu	
+	if (player.y < 130u){ //menu	
 			
 	
 		if(joypad()){
 			
 
 			if (ISDOWN(J_LEFT)){			
-				sflip= 0x20;
-				player_direction = 0x04;
-				if(xpos != 8u){
-					xpos-= 0x02;	
-				}
+				movePlayerToLeft();
 			}
 		
 			if (ISDOWN(J_RIGHT)){			
-				sflip= 0x00;
-				player_direction = 0x06;				
-				if(xpos != 136u){
-					xpos+= 0x02;	
-				}	
+				movePlayerToRight();
 			}		
 			
 
 			
 			if (ISDOWN(J_SELECT)){
 				//load_score();
-				//game_state = STATE_GAME_PLAYERDIE;
+				//GAMESTATE = GAMESTATE_PLAYER_DIE;
 				FX_Stop();
 			}
 			
@@ -109,47 +101,26 @@ void stateGamePlay(){
 				FX_Play(6);
 			}
 
-			if (ISDOWN(J_A)){ //JUMP
-				if( ypos > 20u){	
-					ysp = jump_force;
-				}
+			if (ISDOWN(J_A) || ISDOWN(J_UP)){ //JUMP
+				playerJump();
 			}
 
-			if(RELEASED(J_A)){							
-			} 	
+			if (ISDOWN(J_DOWN) ){ 
+				player.y+= 1u;
+			}
 
-			if(ISDOWN(J_B)){
-				//newBubble();			
-											
-			}	
+		
 							
 			if(CLICKED(J_B)){
+				playerShootBubble();
 				newBubble();
-				//playSoundShoot();
 				FX_Play(1);
-				sprite_index = 32u;	
-							
-				
 			}
 		}	
 
 	
-		
-		if(ysp != 0x00){
-		 ysp-= 0x01;
-		}		
 
-
-
-		ypos-= ysp;				
-		ypos+= gravity;
-
-
-
-		drawPlayer();
-		movePlayer();
-
-
+		updatePlayer();
 		updateBubbles();		
 
 		updateEnemies();
@@ -163,25 +134,14 @@ void stateGamePlay(){
 			delay_new_enemie+= 1;	
 		}
 		
-
-
-		
-
-
-		
 	}else{
-	  	game_state = STATE_GAME_PLAYERDIE;
+	  	GAMESTATE = GAMESTATE_PLAYER_DIE;
 	  	stateGamePlayerDie();
 	}
 
 	
-	
-	animatePlayer();		
 	animateEnemies();		
-	animateWater();
-	
-	
-		
+	animateWater();	
 }
 
 
@@ -192,44 +152,46 @@ void main() {
 		CP_UpdateMusic();
 		FX_Update();
 		
-		switch (game_state){
+		switch (GAMESTATE){
 
-			case STATE_GAME_LOGO:
+			case GAMESTATE_PLAY:
+
+				stateGamePlay();				
+			break;
+
+			case GAMESTATE_LOGO:
 				stateGameLogo();
 			break;
 
-			case STATE_GAME_INTRO:
+			case GAMESTATE_INTRO:
 				//game intro
 
 				stateGameIntro();
 			break;
 			
-			case STATE_GAME_TITLE:
+			case GAMESTATE_TITLE:
 				stateGameTitle();
-				//game_state = GAME_PLAY;			
+				//GAMESTATE = GAME_PLAY;			
 			break;
 
-			case STATE_GAME_LOADGAMEPLAY:
+			case GAMESTATE_LOAD_GAMEPLAY:
 				stateGameLoadGameplay();
 			break;
 
-			case STATE_GAME_PLAY:
+			
 
-				stateGamePlay();				
-			break;
-
-			case STATE_GAME_PLAYERDIE:								
+			case GAMESTATE_PLAYER_DIE:								
 				stateGamePlayerDie();				
 			break;
 
 
 			
 			
-			case STATE_GAME_PAUSE:
+			case GAMESTATE_PAUSE:
 				//game PAUSE
 			break;
 			
-			case STATE_GAME_OVER:
+			case GAMESTATE_OVER:
 				//game OVER				
 				stateGameGameOver();
 			break;
