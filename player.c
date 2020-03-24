@@ -95,7 +95,7 @@ void movePlayerToRight(){
 }
 
 void playerJump(){
-	if( player.y > 20u){	
+	if( player.y > 14u){	
 		player.y_speed = player.jump_force;
 	}
 }

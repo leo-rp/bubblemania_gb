@@ -125,24 +125,27 @@ UINT16 random_seed;
 
 UINT8 last_row;
 UINT8 delay_new_enemie;
-UINT8 delay_dead_enemie;
 
 
 
 
 
 struct Player player;  
-struct Bubble bubbles[MAX_BUBBLES_ON_SCREEN];
-struct Enemie enemies[10];
-
-struct Bubble *p_bubble; //pointer
-struct Enemie *p_enemie; //pointer
 
 
-	UINT8 enemies_x[10];
+
+UINT8 enemies_x[10];
 UINT8 enemies_y[10];
 UINT8 enemies_active[10];
 UINT8 enemies_direction[10];
 UINT8 enemies_type[10];
 UINT8 enemies_sprite[10];
 UINT8 enemies_jumps[10];
+UINT8 enemies_splash[10];
+UINT8 enemies_splash_delay[10];
+
+
+UINT8 bubbles_x[3];
+UINT8 bubbles_y[3];
+UINT8 bubbles_active[3];
+UINT8 bubbles_direction[3];

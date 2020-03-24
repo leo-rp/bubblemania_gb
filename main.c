@@ -8,13 +8,14 @@
 #include "libs/fx_hammer_funcs.c"
 
 #include "player.h"
-#include "bubbles.h"
 #include "defines.h"
-#include "enemies.h"
 
-#include "enemies.c"
-#include "score.c"
+
 #include "bubbles.c"
+#include "score.c"
+#include "enemies.c"
+
+
 #include "player.c"
 
 
@@ -121,13 +122,13 @@ void stateGamePlay(){
 	
 
 		updatePlayer();
-		updateBubbles();		
+		updateBubbles();	
 
 		updateEnemies();
-		collidePlayer();
+		//collidePlayer();
 		
 
-		if(delay_new_enemie > 40){
+		if(delay_new_enemie > 100){
 			newEnemie();
 			delay_new_enemie = 0;	
 		}else{
@@ -140,7 +141,7 @@ void stateGamePlay(){
 	}
 
 	
-	animateEnemies();		
+	
 	animateWater();	
 }
 
