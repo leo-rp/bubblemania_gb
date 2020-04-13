@@ -77,15 +77,18 @@ UINT8 game_play_counter;
 
 UINT16 frame_counter; //delays
 UINT8 oldjoystate, joystate;
+
+UINT16 temp_score;
 UINT16 score;
 UINT16 hi_score;
+UINT8 easy_mode;
 
 
 
 
 
 /* water*/
-INT16 water_animation; /* does not work with UINT16 */
+INT16 water_animation; /* does not work with UINT8 */
 UINT8 water_delay;
 
 /* enemie*/
@@ -141,8 +144,9 @@ UINT8 enemies_direction[10];
 UINT8 enemies_type[10];
 UINT8 enemies_sprite[10];
 UINT8 enemies_jumps[10];
-UINT8 enemies_splash[10];
-UINT8 enemies_splash_delay[10];
+
+UINT8 enemies_splash;
+UINT8 enemies_splash_delay;
 
 
 UINT8 bubbles_x[3];

@@ -94,6 +94,14 @@ void movePlayerToRight(){
 	}	
 }
 
+void movePlayerToDown(){
+	//player.sprite_hflip= 0x00;
+	player.direction = 0x02;				
+	if(player.y != 130u){
+		player.y+= 0x02;	
+	}	
+}
+
 void playerJump(){
 	if( player.y > 14u){	
 		player.y_speed = player.jump_force;
@@ -112,7 +120,10 @@ void updatePlayer(){
 	}		
 
 	player.y-= player.y_speed;				
-	player.y+= GRAVITY;
+	//if(player.y < 130u){  easy mode 
+		player.y+= GRAVITY;	
+	//}
+	
 
 	drawPlayer();
 	movePlayer();

@@ -75,7 +75,7 @@ void stateGamePlay(){
 	oldjoystate = joystate;
 	joystate = joypad();
 
-	if (player.y < 130u){ //menu	
+	if (player.y < 130u){ //menu or easy mode	
 			
 	
 		if(joypad()){
@@ -107,7 +107,7 @@ void stateGamePlay(){
 			}
 
 			if (ISDOWN(J_DOWN) ){ 
-				player.y+= 1u;
+				movePlayerToDown();
 			}
 
 		
@@ -125,7 +125,7 @@ void stateGamePlay(){
 		updateBubbles();	
 
 		updateEnemies();
-		//collidePlayer();
+		
 		
 
 		if(delay_new_enemie > 100){
@@ -143,6 +143,7 @@ void stateGamePlay(){
 	
 	
 	animateWater();	
+	animateEnemies();
 }
 
 
@@ -184,10 +185,7 @@ void main() {
 			case GAMESTATE_PLAYER_DIE:								
 				stateGamePlayerDie();				
 			break;
-
-
-			
-			
+						
 			case GAMESTATE_PAUSE:
 				//game PAUSE
 			break;

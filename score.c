@@ -54,24 +54,24 @@ void updateScore(){
 		max_enemies_on_creen = 9;
 	}
 
-
-
+	temp_score = score;
 
 	if(score >= 100U) {
-		i = score / 100U;
-		i+= 0x5C;
-		set_win_tiles(10u, 0, 1U, 1U, &i);
+		temp_score = score / 100U;
+		temp_score+= 0x5C;		
+		set_win_tiles(10u, 0, 1U, 1U, &temp_score);
 	}
 	if(score >= 10U) {
-		i = (score / 10U) % 10;
-		i+= 0x5C;
-		set_win_tiles(11u, 0, 1U, 1U, &i);
+		temp_score = (score / 10U) % 10;
+		temp_score+= 0x5C;
+		set_win_tiles(11u, 0, 1U, 1U, &temp_score);
 	}
 	if(score) {
-		i = score % 10U;
-		i+= 0x5C;
-		set_win_tiles(12U, 0, 1U, 1U, &i);		
+		temp_score = score % 10U;
+		temp_score+= 0x5C;
+		set_win_tiles(12U, 0, 1U, 1U, &temp_score);		
 	}	
+	
 }
 
 

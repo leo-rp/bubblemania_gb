@@ -38,33 +38,26 @@ void initEnemies(){
 
 
 void enemieSplash(UINT8 x, UINT8 y){
-	if(enemies_splash_delay[i]){
-		if(enemies_splash_delay[i] == 80){
-		
+	enemies_splash_delay = 100u;
+	set_sprite_tile(11, 0x52 );
+	set_sprite_tile(12, 0x54 );		
 			
-				set_sprite_tile(11 + i, 0x52 );
-				set_sprite_tile(12 + i, 0x54 );		
-			/*
-				set_sprite_tile(11 + i, 0x54 );
-				set_sprite_tile(11 + i, 0x52 );	
-				
+	move_sprite(11, x, y);
+	move_sprite(12, x + 8, y);
 
-			if( enemies_type[i] == 3){
-				set_sprite_tile(11 + i, 0x52 );
-				set_sprite_tile(12 + i, 0x54 );		
-			}	
-			*/
+}
 
-		}
-		move_sprite(11, x, y);
-		move_sprite(12, x + 8, y);
+void enemieSplashUpdate(){
+	if(enemies_splash_delay){
+		
 
-		if(enemies_splash_delay[i] == 50){
+		if(enemies_splash_delay== 1){
 			//points
 		}
-		enemies_splash_delay[i]-= 1u;
+		enemies_splash_delay-= 1u;
 	}else{
-
+		move_sprite(11, 0, 0);
+		move_sprite(12, 0, 0);
 	}
 }
 
@@ -80,8 +73,8 @@ void updateEnemies(){
 					c = collideWithEnemie(i, player.x+ 4, player.y + 4, 24u, 24u );
 					if(c){ //collision		
 						FX_Play(5);	
-						enemies_splash_delay[i] = 80u;
-						enemieSplash(enemies_x[i], enemies_y[i]);
+						deactiveEnemie(i);
+						//enemieSplash(enemies_x[i], enemies_y[i]);
 						GAMESTATE = GAMESTATE_PLAYER_DIE;
 						return;
 					}	
@@ -95,7 +88,7 @@ void updateEnemies(){
 							c = collideWithEnemie(i, bubbles_x[j], bubbles_y[j] + 4, 8u, 9u );
 							if(c){ //collision
 								FX_Play(8);		
-								enemies_splash_delay[i] = 80u;
+								
 								enemieSplash(enemies_x[i], enemies_y[i]);
 								
 																						
@@ -111,7 +104,7 @@ void updateEnemies(){
 											score+=1U;//bird
 										break;
 									}									
-									//updateScore();							
+									updateScore();							
 								}
 								deactiveEnemie(i);
 								deactiveBubble(j);
@@ -154,7 +147,7 @@ void updateEnemies(){
 					     	
 							break;
 
-							case 3: //star
+							/*case 3: //star
 								if(enemies_y[i] < 96){
 									enemies_direction[i] = 1;
 									enemies_jumps[i]+=1;
@@ -180,7 +173,7 @@ void updateEnemies(){
 						     		enemies_y[i]-= enemies_speed;					     		
 					     		}
 					     	
-							break;
+							break;*/
 							default : //bird
 								if(enemies_direction[i]){
 					     			enemies_x[i]+= enemies_speed;			     	
@@ -191,45 +184,7 @@ void updateEnemies(){
 							break;
 						}
 
-						if(enemie_delay > 4u){			  	
-	  						enemie_delay = 0;  	
-
-					  		if(enemies_active[i]){
-
-						  		switch(enemies_type[i]){
-						 			case 2 :
-										enemie_animation_b = enemie_animation_b ? 0 : 4;
-										if(enemies_direction[i]){
-											set_sprite_tile(16 + i, 0x5E + enemie_animation_b);
-											set_sprite_tile(28 + i, 0x60 + enemie_animation_b);	
-										}else{
-											set_sprite_tile(28 + i, 0x5E + enemie_animation_b);
-											set_sprite_tile(16 + i, 0x60 + enemie_animation_b);	
-										}
-										
-									break;
-
-									case 3:
-										
-									break;
-
-									default:					
-										enemie_animation_a = enemie_animation_a ? 0 : 4;
-										if(enemies_direction[i]){
-											set_sprite_tile(16 + i, 0x56 + enemie_animation_a);
-											set_sprite_tile(28 + i, 0x58 + enemie_animation_a);
-										}else{
-											set_sprite_tile(28 + i, 0x56 + enemie_animation_a);
-											set_sprite_tile(16 + i, 0x58 + enemie_animation_a);
-										}
-									break;	
-								}
-						  	
-			
-							}else{
-								enemie_delay+= 1u;
-							}
-						}
+						
 					}
 
 					
@@ -243,12 +198,55 @@ void updateEnemies(){
 		 	}
 		move_sprite(16+i , enemies_x[i], enemies_y[i]);
 		move_sprite(28+i , enemies_x[i] + 8, enemies_y[i] );
+		enemieSplashUpdate();
+
 	  	}
 	  	
 		
   	}
 
 
+void animateEnemies(){
+	if(enemie_delay > 4u){			  	
+	  	enemie_delay = 0;
+	  	for(i = 0; i < 10u; i +=1){
+
+	  		if(enemies_active[i]){
+
+		  		switch(enemies_type[i]){
+		 			case 2 :
+						enemie_animation_b = enemie_animation_b ? 0 : 4;
+						if(enemies_direction[i]){
+							set_sprite_tile(16 + i, 0x5E + enemie_animation_b);
+							set_sprite_tile(28 + i, 0x60 + enemie_animation_b);	
+						}else{
+							set_sprite_tile(28 + i, 0x5E + enemie_animation_b);
+							set_sprite_tile(16 + i, 0x60 + enemie_animation_b);	
+						}
+						
+					break;
+
+					case 3:
+						
+					break;
+
+					default:					
+						enemie_animation_a = enemie_animation_a ? 0 : 4;
+						if(enemies_direction[i]){
+							set_sprite_tile(16 + i, 0x56 + enemie_animation_a);
+							set_sprite_tile(28 + i, 0x58 + enemie_animation_a);
+						}else{
+							set_sprite_tile(28 + i, 0x56 + enemie_animation_a);
+							set_sprite_tile(16 + i, 0x58 + enemie_animation_a);
+						}
+					break;	
+				}
+			}		  	
+		}
+	}else{
+		enemie_delay+= 1u;
+	}
+}	
 
 void newEnemie(){  
 
@@ -284,7 +282,7 @@ void newEnemie(){
 			     	}			     	
 		     	break;
 
-		     	case 3: //star
+		     	/*case 3: //star
 			     	enemies_x[i] = random_number >> 4; // 0 - 8
 		     		if (last_row == enemies_x[i]){
 		     			enemies_x[i]+=1;
@@ -306,7 +304,7 @@ void newEnemie(){
 		     		set_sprite_prop(16 + i , 0x00);
 		     		set_sprite_prop(28 + i , 0x00);		     		
 			    
-		     	break;
+		     	break;*/
 		     	
 		     	default :
 
