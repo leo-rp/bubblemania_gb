@@ -113,7 +113,8 @@ UINT8 max_enemies_on_creen;
 
 UINT8 enemies_speed;
 UINT8 used_enemies;
-UINT8 c;
+UINT8 collision_1;
+
 
 
 UINT8 wave_fish;
@@ -153,3 +154,8 @@ UINT8 bubbles_x[3];
 UINT8 bubbles_y[3];
 UINT8 bubbles_active[3];
 UINT8 bubbles_direction[3];
+
+UINT8 x1, y1, w1, h1; 
+UINT8 x2, y2, w2, h2;
+UINT8 s1, s2, s3, s4;	 
+UINT8 background_delay;

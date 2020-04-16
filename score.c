@@ -25,7 +25,7 @@ void load_score(){
 }*/
 
 void updateScore(){
-
+/*
 	if(score == 20u){
 		max_enemies_on_creen = 3;
 	}
@@ -53,7 +53,7 @@ void updateScore(){
 	if(score == 140u){
 		max_enemies_on_creen = 9;
 	}
-
+*/
 	temp_score = score;
 
 	if(score >= 100U) {

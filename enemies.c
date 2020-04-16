@@ -1,42 +1,3 @@
-UINT8 void collideWithEnemie(UINT8 i, UINT8 x1, UINT8 y1, UINT8 w1, UINT8 h1 ){
-	UINT8 x2, y2, w2, h2;
-	UINT8 s1, s2, s3, s4;	 
-	
-	x2 = enemies_x[i];							     		
-	w2 = 15;
-	y2 = enemies_y[i] + 4;
-	h2 = 10;
-	
-	s1 = x1 + w1; // r1 right edge past r2 left
-	s2 = x2 + w2; // r1 left edge past r2 right
-	s3 = y1 + h1; // r1 top edge past r2 bottom
-	s4 = y2 + h2; // r1 bottom edge past r2 top
-
-	if( x2 >= s1 || s2 <= x1 || y2 >= s3 || s4 <= y1 ){
-		return 0;
-	}	
-	return 1;
-}
-
-
-
-
-void deactiveEnemie(UINT8 i){	
-	enemies_x[i] = 0;
-	enemies_y[i] = 0;
-	enemies_active[i] = 0;
-	enemies_direction[i] = 0;
-	enemies_jumps[i] = 0;	
-}
-
-void initEnemies(){		
-	used_enemies = 0;
-	for(i = 0; i < max_enemies_on_creen; i+=1){		
-		deactiveEnemie(i);
-	}
-}
-
-
 void enemieSplash(UINT8 x, UINT8 y){
 	enemies_splash_delay = 100u;
 	set_sprite_tile(11, 0x52 );
@@ -46,6 +7,106 @@ void enemieSplash(UINT8 x, UINT8 y){
 	move_sprite(12, x + 8, y);
 
 }
+
+void deactiveEnemie(UINT8 i){	
+	enemies_x[i] = 0;
+	enemies_y[i] = 0;
+	enemies_active[i] = 0;
+	enemies_direction[i] = 0;
+	enemies_jumps[i] = 0;	
+}
+
+
+void collideWithEnemie(UINT8 i){
+	
+	x1 = player.x+ 4;
+	y1 = player.y + 4;
+	w1 = 24u;
+	h1 = 24u;
+	x2 = enemies_x[i];							     		
+	w2 = 15;
+	y2 = enemies_y[i] + 4;
+	h2 = 10;
+	
+	s1 = x1 + w1; // r1 right edge past r2 left
+	s2 = x2 + w2; // r1 left edge past r2 right
+	s3 = y1 + h1; // r1 top edge past r2 bottom
+	s4 = y2 + h2; // r1 bottom edge past r2 top*/
+
+	if( x2 >= s1 || s2 <= x1 || y2 >= s3 || s4 <= y1 ){
+		collision_1 =  0;
+
+		for( j = 0; j != MAX_BUBBLES_ON_SCREEN; j+=1u){
+				if(bubbles_active[j]){
+					x1 = bubbles_x[j];
+					y1 = bubbles_y[j] + 4;
+					w1 = 8u;
+					h1 = 9u;
+					/*x2 = enemies_x[i];							     		
+					w2 = 15;
+					y2 = enemies_y[i] + 4;
+					h2 = 10;*/
+		
+					s1 = x1 + w1; // r1 right edge past r2 left
+					s2 = x2 + w2; // r1 left edge past r2 right
+					s3 = y1 + h1; // r1 top edge past r2 bottom
+					s4 = y2 + h2; // r1 bottom edge past r2 top*/
+
+					if( x2 >= s1 || s2 <= x1 || y2 >= s3 || s4 <= y1 ){
+						//no collision
+					}else{
+						
+						FX_Play(8);							
+						enemieSplash(enemies_x[i], enemies_y[i]);
+						
+																				
+						if(score != 999u){
+							switch(enemies_type[i]){
+								case 2://fish
+									score+=3U;
+								break;
+								case 3:
+									score+=2U;//star
+								break;
+								default :
+									score+=1U;//bird
+								break;
+							}									
+							updateScore();							
+						}
+						deactiveEnemie(i);
+						deactiveBubble(j);
+					}
+					
+
+
+					
+				}
+			}
+	}else{
+		collision_1 = 1;
+	}
+	
+
+
+	
+
+}
+
+
+
+
+
+
+void initEnemies(){		
+	used_enemies = 0;
+	for(i = 0; i < 10; i+=1){		
+		deactiveEnemie(i);
+	}
+}
+
+
+
 
 void enemieSplashUpdate(){
 	if(enemies_splash_delay){
@@ -65,58 +126,23 @@ void enemieSplashUpdate(){
 
 void updateEnemies(){
 	
-		for( i = 0; i != 10u; i+=1u){
+		for( i = 0; i != max_enemies_on_creen; i+=1u){
 			if(enemies_active[i]){ 
 
 				if( enemies_x[i] < 168  || enemies_x[i] < 4){															
 					
-					c = collideWithEnemie(i, player.x+ 4, player.y + 4, 24u, 24u );
-					if(c){ //collision		
+					collideWithEnemie(i);
+
+					/*if(collision_1){ //collision		
 						FX_Play(5);	
 						deactiveEnemie(i);
 						//enemieSplash(enemies_x[i], enemies_y[i]);
 						GAMESTATE = GAMESTATE_PLAYER_DIE;
 						return;
-					}	
+					}*/
 
 
-					/*bubble collision*/
-					if(player.used_bubbles){		
-						for( j = 0; j != MAX_BUBBLES_ON_SCREEN; j+=1u){
-							if(bubbles_active[j]){
-
-							c = collideWithEnemie(i, bubbles_x[j], bubbles_y[j] + 4, 8u, 9u );
-							if(c){ //collision
-								FX_Play(8);		
-								
-								enemieSplash(enemies_x[i], enemies_y[i]);
-								
-																						
-								if(score != 999u){
-									switch(enemies_type[i]){
-										case 2://fish
-											score+=3U;
-										break;
-										case 3:
-											score+=2U;//star
-										break;
-										default :
-											score+=1U;//bird
-										break;
-									}									
-									updateScore();							
-								}
-								deactiveEnemie(i);
-								deactiveBubble(j);
-							}
-
-							}
-						}	
-
-					}					
-
-					/*bubble collision*/		
-
+					
 					if(enemies_active[i]){ 
 
 
@@ -209,7 +235,7 @@ void updateEnemies(){
 void animateEnemies(){
 	if(enemie_delay > 4u){			  	
 	  	enemie_delay = 0;
-	  	for(i = 0; i < 10u; i +=1){
+	  	for(i = 0; i < max_enemies_on_creen; i +=1){
 
 	  		if(enemies_active[i]){
 
@@ -251,7 +277,7 @@ void animateEnemies(){
 void newEnemie(){  
 
 
-	for( i = 0; i != 10u; i+=1u){
+	for( i = 0; i != max_enemies_on_creen; i+=1u){
 	    if( !enemies_active[i]){
     		 
     		 random_number = rand();

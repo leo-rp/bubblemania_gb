@@ -77,7 +77,6 @@ void animatePlayer(){
 
 
 
-
 void movePlayerToLeft(){
 	player.sprite_hflip= 0x20;
 	player.direction = 0x04;
@@ -94,17 +93,16 @@ void movePlayerToRight(){
 	}	
 }
 
-void movePlayerToDown(){
-	//player.sprite_hflip= 0x00;
-	player.direction = 0x02;				
+void movePlayerToDown(){	
+	
 	if(player.y != 130u){
 		player.y+= 0x02;	
 	}	
 }
 
-void playerJump(){
+void playerJump(UINT8 f){
 	if( player.y > 14u){	
-		player.y_speed = player.jump_force;
+		player.y_speed = f;
 	}
 }
 

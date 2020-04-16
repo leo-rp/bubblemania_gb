@@ -1,9 +1,20 @@
 
 
 
+void movebackground(){
+	if(background_delay > 40){
+		SCY_REG-=1; 
+		background_delay = 0;
+	}else{
+		background_delay+=1;
+	}
+
+}
+
 void animateWater(){
 	if(water_delay > 9u){
 		water_delay = 0;
+	
 		if(water_animation < 512u){		
 			SWITCH_ROM_MBC1(BANK_GRAPHICS);
 			memcpy(0x9580, &water[water_animation], SPRITE_LENGTH);
@@ -232,7 +243,7 @@ void stateGameLoadGameplay(){
 
 		player.lives = 3u;
 
-		player.jump_force = 0x04;	
+		player.jump_force = 0x06;	
 		
 	    player.x = 0x58;
 	    player.y = 0x10;
@@ -241,9 +252,10 @@ void stateGameLoadGameplay(){
 		player.sprite_hflip = 0x00;
 		fx_jump_finished = 0x01;
 		player.direction = 0x06;
-		score = 0x00;
+		//score = 0x00;
+		score = 140u;
 		load_score();
-		max_enemies_on_creen = 2;
+		max_enemies_on_creen = 8;
 
 
 		enemies_speed = 1;

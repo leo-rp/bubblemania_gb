@@ -72,10 +72,11 @@ void stateGamePlayerDie(){
 
 
 void stateGamePlay(){
+
 	oldjoystate = joystate;
 	joystate = joypad();
 
-	if (player.y < 130u){ //menu or easy mode	
+	
 			
 	
 		if(joypad()){
@@ -102,8 +103,12 @@ void stateGamePlay(){
 				FX_Play(6);
 			}
 
-			if (ISDOWN(J_A) || ISDOWN(J_UP)){ //JUMP
-				playerJump();
+			if (ISDOWN(J_A) ){ //JUMP
+				playerJump(player.jump_force);
+			}
+
+			if (ISDOWN(J_UP) ){ 
+				playerJump(4);
 			}
 
 			if (ISDOWN(J_DOWN) ){ 
@@ -121,29 +126,41 @@ void stateGamePlay(){
 
 	
 
+
+	 	if (player.y > 120u){ 
+	  		playerJump(6);
+	  		//to add bounce sound	  		
+	  	}
+	
 		updatePlayer();
+		updateEnemies();		
 		updateBubbles();	
+		animateEnemies();
 
-		updateEnemies();
 		
 		
+		
 
-		if(delay_new_enemie > 100){
+		if(delay_new_enemie > 40){
 			newEnemie();
 			delay_new_enemie = 0;	
 		}else{
 			delay_new_enemie+= 1;	
 		}
 		
-	}else{
-	  	GAMESTATE = GAMESTATE_PLAYER_DIE;
+	
+	  	/*GAMESTATE = GAMESTATE_PLAYER_DIE;
 	  	stateGamePlayerDie();
-	}
+	  	*/
 
-	
-	
+	 
 	animateWater();	
-	animateEnemies();
+	
+	movebackground();
+	
+	
+	
+	
 }
 
 
