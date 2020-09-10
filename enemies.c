@@ -13,7 +13,7 @@ void deactiveEnemie(UINT8 i){
 	enemies_y[i] = 0;
 	enemies_active[i] = 0;
 	enemies_direction[i] = 0;
-
+	enemies_jumps[i] = 0;	
 }
 
 
@@ -172,24 +172,28 @@ void updateEnemies(){
 
 							case 3: //star
 								if(enemies_y[i] < 96){
-									enemies_direction[i] = 0;
-
+									enemies_direction[i] = 1;
+									enemies_jumps[i]+=1;
 									set_sprite_tile(16 + i, 0x6A );
 				     				set_sprite_tile(28 + i, 0x6C );										
 								}
 
 								if( enemies_y[i] > 136){
-
-										enemies_direction[i] = 1;
+									if(enemies_jumps[i] < 1){
+										enemies_direction[i] = 0;
 										set_sprite_tile(16 + i, 0x66 );
-				     					set_sprite_tile(28 + i, 0x68 );									
+				     					set_sprite_tile(28 + i, 0x68 );											
+				     				}else{
+					     				deactiveEnemie(i);
+					     				break;
+					     			}
+									
 								}
 
 								if(enemies_direction[i]){
-					     		 		enemies_y[i]-= enemies_speed;	//up				     			
+					     			enemies_y[i]+= enemies_speed;				     							     		
 					     		}else{		     		
-						     	
-						     		enemies_y[i]+= enemies_speed;	//down			     							     		
+						     		enemies_y[i]-= enemies_speed;					     		
 					     		}
 					     	
 							break;
@@ -282,8 +286,7 @@ void newEnemie(){
 
 		     	case 2 : //fish
 			     	enemies_y[i] = 7;
-			     	
-
+			     	enemies_jumps[i] = 0;
 			     	last_row = enemies_y[i];			     	
 			     	enemies_y[i] = enemies_y[i] << 4;
 

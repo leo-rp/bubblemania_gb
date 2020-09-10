@@ -29,39 +29,7 @@
 #define ISDOWN(x) (joystate & (x))
 #define GRAVITY 0x01;
 
-/*extern const int oldrobotto_tile_count;
-extern const unsigned char oldrobotto_map_data[];
-extern const unsigned char oldrobotto_tile_data[]; 
 
-extern const int logo_2_a_tile_count;
-extern const unsigned char logo_2_a_map_data[];
-extern const unsigned char logo_2_a_tile_data[]; 
-
-extern const int logo_2_b_tile_count;
-extern const unsigned char logo_2_b_map_data[];
-extern const unsigned char logo_2_b_tile_data[]; 
-
-
-extern const int background_tile_count;
-extern const unsigned char background_map_data[];
-extern const unsigned char background_tile_data[]; 
-extern const unsigned char hub[];
-extern const unsigned char hub_map[];
-
-
-extern const unsigned char bubblemania_map_data[];
-extern const unsigned char bubblemania_tile_data[];
-extern const int bubblemania_tile_data_size;
-extern const int bubblemania_tile_count;
-
-extern const unsigned char game_over;
-extern const unsigned char player_sprites[];
-extern const unsigned char bubble_sprites[];
-extern const unsigned char water[];
-extern const unsigned char enemies_sprites[];
-
-//extern const unsigned char game_over[];
-*/
 
 const unsigned char hub_no_element = 0x66;
 const unsigned char hub_bubble = 0x6E;
@@ -145,7 +113,7 @@ UINT8 enemies_active[8];
 UINT8 enemies_direction[8];
 UINT8 enemies_type[8];
 UINT8 enemies_sprite[8];
-
+UINT8 enemies_jumps[8];
 
 UINT8 enemies_splash;
 UINT8 enemies_splash_delay;
@@ -159,4 +127,3 @@ UINT8 bubbles_direction[3];
 UINT8 x1, y1, w1, h1; 
 UINT8 x2, y2, w2, h2;
 UINT8 s1, s2, s3, s4;	 
-UINT8 background_delay;
