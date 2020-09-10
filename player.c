@@ -93,23 +93,14 @@ void movePlayerToRight(){
 	}	
 }
 
-void movePlayerToDown(){	
-	
-	if(player.y != 130u){
-		player.y+= 0x02;	
-	}	
-}
 
-void playerJump(UINT8 f){
+void playerJump(){
 	if( player.y > 14u){	
-		player.y_speed = f;
+		player.y_speed = player.jump_force;
 	}
 }
 
-void playerShootBubble(){
-	
-	player.sprite_index = 32u;	
-}
+
 
 
 void updatePlayer(){

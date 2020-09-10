@@ -5,7 +5,7 @@ void enemieSplash(UINT8 x, UINT8 y){
 			
 	move_sprite(11, x, y);
 	move_sprite(12, x + 8, y);
-
+	//add points 
 }
 
 void deactiveEnemie(UINT8 i){	
@@ -13,7 +13,7 @@ void deactiveEnemie(UINT8 i){
 	enemies_y[i] = 0;
 	enemies_active[i] = 0;
 	enemies_direction[i] = 0;
-	enemies_jumps[i] = 0;	
+
 }
 
 
@@ -56,7 +56,7 @@ void collideWithEnemie(UINT8 i){
 						//no collision
 					}else{
 						
-						FX_Play(8);							
+						//FX_Play(8);							
 						enemieSplash(enemies_x[i], enemies_y[i]);
 						
 																				
@@ -86,10 +86,7 @@ void collideWithEnemie(UINT8 i){
 	}else{
 		collision_1 = 1;
 	}
-	
 
-
-	
 
 }
 
@@ -100,7 +97,7 @@ void collideWithEnemie(UINT8 i){
 
 void initEnemies(){		
 	used_enemies = 0;
-	for(i = 0; i < 10; i+=1){		
+	for(i = 0; i < max_enemies_on_creen; i+=1){		
 		deactiveEnemie(i);
 	}
 }
@@ -129,17 +126,17 @@ void updateEnemies(){
 		for( i = 0; i != max_enemies_on_creen; i+=1u){
 			if(enemies_active[i]){ 
 
-				if( enemies_x[i] < 168  || enemies_x[i] < 4){															
+				if( enemies_x[i] < 170  || enemies_x[i] < 1){															
 					
 					collideWithEnemie(i);
 
-					/*if(collision_1){ //collision		
-						FX_Play(5);	
+					if(collision_1){ //collision		
+						
 						deactiveEnemie(i);
-						//enemieSplash(enemies_x[i], enemies_y[i]);
+						enemieSplash(enemies_x[i], enemies_y[i]);
 						GAMESTATE = GAMESTATE_PLAYER_DIE;
 						return;
-					}*/
+					}
 
 
 					
@@ -173,33 +170,29 @@ void updateEnemies(){
 					     	
 							break;
 
-							/*case 3: //star
+							case 3: //star
 								if(enemies_y[i] < 96){
-									enemies_direction[i] = 1;
-									enemies_jumps[i]+=1;
+									enemies_direction[i] = 0;
+
 									set_sprite_tile(16 + i, 0x6A );
 				     				set_sprite_tile(28 + i, 0x6C );										
 								}
 
 								if( enemies_y[i] > 136){
-									if(enemies_jumps[i] < 1){
-										enemies_direction[i] = 0;
+
+										enemies_direction[i] = 1;
 										set_sprite_tile(16 + i, 0x66 );
-				     					set_sprite_tile(28 + i, 0x68 );											
-				     				}else{
-					     	
-					     				break;
-					     			}
-									
+				     					set_sprite_tile(28 + i, 0x68 );									
 								}
 
 								if(enemies_direction[i]){
-					     			enemies_y[i]+= enemies_speed;				     							     		
+					     		 		enemies_y[i]-= enemies_speed;	//up				     			
 					     		}else{		     		
-						     		enemies_y[i]-= enemies_speed;					     		
+						     	
+						     		enemies_y[i]+= enemies_speed;	//down			     							     		
 					     		}
 					     	
-							break;*/
+							break;
 							default : //bird
 								if(enemies_direction[i]){
 					     			enemies_x[i]+= enemies_speed;			     	
@@ -253,7 +246,7 @@ void animateEnemies(){
 					break;
 
 					case 3:
-						
+						//animate the fucking star
 					break;
 
 					default:					
@@ -283,24 +276,25 @@ void newEnemie(){
     		 random_number = rand();
 		     enemies_type[i] =  random_number >> 6; //0 - 3 
 		     random_number = rand();
-	     	 enemies_direction[i] = random_number >> 7; // 0- 1
+	     	 enemies_direction[i] = random_number >> 7; // 0- 1*/
 
 		     switch(enemies_type[i]){		     	
 
 		     	case 2 : //fish
 			     	enemies_y[i] = 7;
-			     	enemies_jumps[i] = 0;
+			     	
+
 			     	last_row = enemies_y[i];			     	
 			     	enemies_y[i] = enemies_y[i] << 4;
 
 			     	if(enemies_direction[i]){
-			     		enemies_x[i] = 8;	
+			     		enemies_x[i] = 0;	
 			     		set_sprite_tile(16 + i, 0x5E );
 			     		set_sprite_tile(28 + i, 0x60 );
 			     		set_sprite_prop(16 + i , 0x00);
 			     		set_sprite_prop(28 + i , 0x00);
 			     	}else{
-			     		enemies_x[i] = 159;
+			     		enemies_x[i] = 168;
 			     		set_sprite_tile(28 + i, 0x5E );
 			     		set_sprite_tile(16 + i, 0x60 );
 			     		set_sprite_prop(16 + i, 0x20);
@@ -308,7 +302,7 @@ void newEnemie(){
 			     	}			     	
 		     	break;
 
-		     	/*case 3: //star
+		     	case 3: //star
 			     	enemies_x[i] = random_number >> 4; // 0 - 8
 		     		if (last_row == enemies_x[i]){
 		     			enemies_x[i]+=1;
@@ -330,7 +324,7 @@ void newEnemie(){
 		     		set_sprite_prop(16 + i , 0x00);
 		     		set_sprite_prop(28 + i , 0x00);		     		
 			    
-		     	break;*/
+		     	break;
 		     	
 		     	default :
 
@@ -352,13 +346,13 @@ void newEnemie(){
 			     	enemies_y[i] = enemies_y[i] << 4;		     	
 
 			     	if(enemies_direction[i]){
-			     		enemies_x[i] = 8;	
+			     		enemies_x[i] = 0;	
 			     		set_sprite_tile(16 + i, 0x56 );
 			     		set_sprite_tile(28 + i, 0x58 );
 			     		set_sprite_prop(16 + i , 0x00);
 			     		set_sprite_prop(28 + i , 0x00);
 			     	}else{
-			     		enemies_x[i] = 159;
+			     		enemies_x[i] = 168;
 			     		set_sprite_tile(16 + i, 0x58 );
 			     		set_sprite_tile(28 + i, 0x56 );			     					     		
 			     		set_sprite_prop(16 + i, 0x20);

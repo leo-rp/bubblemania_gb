@@ -23,7 +23,7 @@
 .Player_SampleUpdate	=	0x4000
 .LY						=	0x44		; LCDC Y-coordinate
 
-_CP_init:
+_CP_Init:
 		jp		.Player_Initialize		; Initialize
 		ret
 		

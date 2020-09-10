@@ -4,9 +4,10 @@
 #include <stdio.h> 
 #include <rand.h> 
 /*audio*/
-#include "libs/carillon_funcs.c"
-#include "libs/fx_hammer_funcs.c"
+//#include "libs/carillon_funcs.c"
 
+
+#include "graphics.c"
 #include "player.h"
 #include "defines.h"
 
@@ -53,7 +54,7 @@ void stateGamePlayerDie(){
 				initEnemies();
 				GAMESTATE = GAMESTATE_PLAY;		
 				frame_counter = 0;
-				FX_Play(7);
+
 			}else{
 
 				initEnemies();
@@ -75,9 +76,6 @@ void stateGamePlay(){
 
 	oldjoystate = joystate;
 	joystate = joypad();
-
-	
-			
 	
 		if(joypad()){
 			
@@ -88,58 +86,33 @@ void stateGamePlay(){
 		
 			if (ISDOWN(J_RIGHT)){			
 				movePlayerToRight();
-			}		
-			
-
-			
-			if (ISDOWN(J_SELECT)){
-				//load_score();
-				//GAMESTATE = GAMESTATE_PLAYER_DIE;
-				FX_Stop();
 			}
 			
 			
-			if(CLICKED(J_A)){				
-				FX_Play(6);
-			}
-
 			if (ISDOWN(J_A) ){ //JUMP
-				playerJump(player.jump_force);
+				playerJump();
 			}
 
-			if (ISDOWN(J_UP) ){ 
-				playerJump(4);
+			
+
+			
+			if(ISDOWN(J_B)){
+				player.sprite_index = 32u;		
 			}
 
-			if (ISDOWN(J_DOWN) ){ 
-				movePlayerToDown();
-			}
-
-		
-							
 			if(CLICKED(J_B)){
-				playerShootBubble();
+				
+				// playerShootBubble(){	
+				
 				newBubble();
-				FX_Play(1);
+				
 			}
 		}	
-
-	
-
-
-	 	if (player.y > 120u){ 
-	  		playerJump(6);
-	  		//to add bounce sound	  		
-	  	}
-	
+		
 		updatePlayer();
 		updateEnemies();		
 		updateBubbles();	
 		animateEnemies();
-
-		
-		
-		
 
 		if(delay_new_enemie > 40){
 			newEnemie();
@@ -149,17 +122,12 @@ void stateGamePlay(){
 		}
 		
 	
-	  	/*GAMESTATE = GAMESTATE_PLAYER_DIE;
-	  	stateGamePlayerDie();
-	  	*/
-
 	 
 	animateWater();	
-	
-	movebackground();
-	
-	
-	
+
+ 	if (player.y > 144u){ 	  		
+  		GAMESTATE = GAMESTATE_PLAYER_DIE;	  	
+  	}
 	
 }
 
@@ -168,8 +136,8 @@ void main() {
 	stateGameBoot();
 	while (1) {		
 		wait_vbl_done();
-		CP_UpdateMusic();
-		FX_Update();
+		//CP_UpdateMusic();
+		
 		
 		switch (GAMESTATE){
 

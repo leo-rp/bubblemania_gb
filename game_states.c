@@ -1,26 +1,16 @@
 
 
-
-void movebackground(){
-	if(background_delay > 40){
-		SCY_REG-=1; 
-		background_delay = 0;
-	}else{
-		background_delay+=1;
-	}
-
-}
-
 void animateWater(){
 	if(water_delay > 9u){
 		water_delay = 0;
 	
 		if(water_animation < 512u){		
-			SWITCH_ROM_MBC1(BANK_GRAPHICS);
-			memcpy(0x9580, &water[water_animation], SPRITE_LENGTH);
-			memcpy(0x95A0, &water[water_animation + 16u ], SPRITE_LENGTH);
-			memcpy(0x9590, &water[water_animation + 32u ], SPRITE_LENGTH);
-			memcpy(0x95B0, &water[water_animation + 48u ], SPRITE_LENGTH);
+
+
+			memcpy( (void *)0x9580, &water[water_animation], SPRITE_LENGTH);
+			memcpy( (void *)0x95A0, &water[(water_animation + 16u) ], SPRITE_LENGTH);
+			memcpy( (void *)0x9590, &water[(water_animation + 32u) ], SPRITE_LENGTH);
+			memcpy( (void *)0x95B0, &water[(water_animation + 48u) ], SPRITE_LENGTH);
 			
 			water_animation+= 64u;			
 		}else{
@@ -41,23 +31,11 @@ void animateWater(){
 
 /* game boot*/
 void stateGameBoot() {	
-    //STAT_REG = 8;    
     disable_interrupts();
-    SPRITES_8x16;    
-    //add_LCD(LCD_Interrupt);
-	//add_VBL(VBL_Interrupt);
-    enable_interrupts();
-	//bank, sample,song
-	
-	/*if((_cpu == 0x01 )  || (_cpu == 0xFF)){
-	  BGP_REG = 0x01B; //classic and pocket	
-	}*/
-	
-	//GAMESTATE = GAMESTATE_LOGO;
-	//turnOnSound();
+    SPRITES_8x16;        
+    enable_interrupts();	
 	random_seed = DIV_REG;
-	GAMESTATE = GAMESTATE_LOGO;
-	FX_Bank(BANK_FX);
+	GAMESTATE = GAMESTATE_LOGO;	
 }
 	
 /*developer logo*/	
@@ -66,9 +44,9 @@ void stateGameLogo(){
 		HIDE_SPRITES;
 		HIDE_WIN;
     	HIDE_BKG;
-		SWITCH_ROM_MBC1(BANK_GRAPHICS);
-		set_bkg_data(0, oldrobotto_tile_count, &oldrobotto_tile_data);
-	    set_bkg_tiles(0, 0, 20, 18, &oldrobotto_map_data);
+
+		//set_bkg_data(0, oldrobotto_tile_count, oldrobotto_tile_data);
+	    //set_bkg_tiles(0, 0, 20, 18, oldrobotto_map_data);
 	  
 		SHOW_BKG;
 		SHOW_SPRITES;
@@ -96,19 +74,17 @@ void stateGameTitle(){
 		HIDE_BKG;
 		HIDE_WIN;
 		HIDE_SPRITES;
-		SWITCH_ROM_MBC1(BANK_GRAPHICS);
-		set_bkg_data(0, bubblemania_tile_count, bubblemania_tile_data);
-		set_bkg_tiles(0, 0, 20, 18, bubblemania_map_data); 
+
+		//set_bkg_data(0, bubblemania_tile_count, bubblemania_tile_data);
+		//set_bkg_tiles(0, 0, 20, 18, bubblemania_map_data); 
 		SHOW_BKG;
 		frame_counter = 1;
-		CP_LoadMusic(BANK_MUSIC, BANK_SMUSIC, 0 );		
-		CP_Play();
+		//CP_LoadMusic(0, 0, 0 );		
+		//CP_Play();
 	}
 
-	if(joypad() & J_START){
-		//FX_Play(3);
-		CP_Pause();
-		
+	if(joypad() & J_START){		
+		//CP_Pause();		
 		GAMESTATE = GAMESTATE_LOAD_GAMEPLAY;
 		frame_counter = 0;
 	}
@@ -121,8 +97,8 @@ void stateGameGameOver(){
 		
 		HIDE_WIN;
 		HIDE_SPRITES;
-		SWITCH_ROM_MBC1(BANK_GRAPHICS);
-		set_sprite_data(0, 28, &game_over);
+		
+		set_sprite_data(0, 28, game_over);
 		set_sprite_tile(0, 0); //G
 		set_sprite_tile(1, 2); //A
 		set_sprite_tile(2, 4); //M
@@ -153,10 +129,8 @@ void stateGameGameOver(){
 
 
 		if (score > hi_score){		
+				
 
-				hi_score = score;
-				save_score();
-			
 				set_sprite_tile(8, 0x16); //N
 				set_sprite_tile(9, 0x06); //E
 				set_sprite_tile(10, 0x18); //W				
@@ -224,22 +198,24 @@ void stateGameLoadGameplay(){
 		HIDE_BKG;
 		HIDE_WIN;
 		HIDE_SPRITES;
-		SWITCH_ROM_MBC1(BANK_GRAPHICS);
+		
 		set_bkg_data(0, background_tile_count, background_tile_data);
 		set_win_data(0x5C, 19, hub); //hub
 	    set_bkg_tiles(0, 0, 20, 18, background_map_data);
 	    set_win_tiles(0, 0, 20, 1, hub_map);
-	    set_sprite_data(0, 80, &player_sprites);
-		set_sprite_data(80, 2, &bubble_sprites);
-		set_sprite_data(82, 32, &enemies_sprites);
+	    set_sprite_data(0, 80, player_sprites);
+		set_sprite_data(80, 2, bubble_sprites);
+		set_sprite_data(82, 32, enemies_sprites);
 
 	    move_win(7u, 136u);	
 		OBP0_REG = 0xC4; //11 00 01 00
 		
-		//SWITCH_ROM_MBC1(0x01);
-		CP_LoadMusic(BANK_MUSIC, BANK_SMUSIC, 0 );	
+		
+		/*
+		CP_LoadMusic(0, 0, 0 );	
 		CP_Play();
-		//CP_FxPlay(1u);
+		*/
+		
 
 		player.lives = 3u;
 
@@ -253,9 +229,9 @@ void stateGameLoadGameplay(){
 		fx_jump_finished = 0x01;
 		player.direction = 0x06;
 		//score = 0x00;
-		score = 140u;
-		load_score();
-		max_enemies_on_creen = 8;
+		score = 0u;
+		
+		max_enemies_on_creen = 2;
 
 
 		enemies_speed = 1;
@@ -267,7 +243,8 @@ void stateGameLoadGameplay(){
 		movePlayer();
 		initBubbles();
 		initEnemies();
-	 	CP_Play();
+	 	
+	 	//CP_Play();
 
 		SHOW_BKG;
     	SHOW_WIN;

@@ -13,10 +13,9 @@
 #define GAMESTATE_LOAD_GAMEPLAY  0x08
 #define GAMESTATE_PLAYER_DIE 0x09
 
-#define BANK_GRAPHICS 0x01
-#define BANK_MUSIC 0x02
-#define BANK_SMUSIC 0x00
-#define BANK_FX 0x03
+
+
+
 #define MAX_BUBBLES_ON_SCREEN 0x03
 #define BUBBLE_SPEED 0x02
 
@@ -30,7 +29,7 @@
 #define ISDOWN(x) (joystate & (x))
 #define GRAVITY 0x01;
 
-extern const int oldrobotto_tile_count;
+/*extern const int oldrobotto_tile_count;
 extern const unsigned char oldrobotto_map_data[];
 extern const unsigned char oldrobotto_tile_data[]; 
 
@@ -41,16 +40,14 @@ extern const unsigned char logo_2_a_tile_data[];
 extern const int logo_2_b_tile_count;
 extern const unsigned char logo_2_b_map_data[];
 extern const unsigned char logo_2_b_tile_data[]; 
-extern const unsigned char year[];
+
 
 extern const int background_tile_count;
 extern const unsigned char background_map_data[];
 extern const unsigned char background_tile_data[]; 
 extern const unsigned char hub[];
 extern const unsigned char hub_map[];
-const unsigned char hub_no_element = 0x66;
-const unsigned char hub_bubble = 0x6E;
-const unsigned char hub_live = 0x67;
+
 
 extern const unsigned char bubblemania_map_data[];
 extern const unsigned char bubblemania_tile_data[];
@@ -64,7 +61,11 @@ extern const unsigned char water[];
 extern const unsigned char enemies_sprites[];
 
 //extern const unsigned char game_over[];
+*/
 
+const unsigned char hub_no_element = 0x66;
+const unsigned char hub_bubble = 0x6E;
+const unsigned char hub_live = 0x67;
 /*auxs*/
 UINT8 i;
 UINT8 j;
@@ -138,13 +139,13 @@ struct Player player;
 
 
 
-UINT8 enemies_x[10];
-UINT8 enemies_y[10];
-UINT8 enemies_active[10];
-UINT8 enemies_direction[10];
-UINT8 enemies_type[10];
-UINT8 enemies_sprite[10];
-UINT8 enemies_jumps[10];
+UINT8 enemies_x[8];
+UINT8 enemies_y[8];
+UINT8 enemies_active[8];
+UINT8 enemies_direction[8];
+UINT8 enemies_type[8];
+UINT8 enemies_sprite[8];
+
 
 UINT8 enemies_splash;
 UINT8 enemies_splash_delay;

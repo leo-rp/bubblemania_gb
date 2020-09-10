@@ -10,7 +10,9 @@
 //rom bank where the FX hammer is stored (0 = no sample)
 UINT8 fxBank = 0;
 
-void FX_TrigFx();
+
+
+void FX_TrigFx(UINT8 fx);
 void FX_StopFX();
 void FX_UpdateFx();
 
@@ -43,6 +45,7 @@ void FX_Bank(UINT8 bank){
 */
 
 void FX_Play(UINT8 fx){		
+	
 	FX_TrigFx(fx);  
 
 }

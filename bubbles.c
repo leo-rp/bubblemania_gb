@@ -45,7 +45,7 @@ void newBubble(){
 			     bubbles_direction[i] = player.direction;
 			     player.used_bubbles+=1U;
 			     
-			     //playSoundShoot();
+
 			     if(bubbles_direction[i] == 0x06){
 			     	bubbles_x[i] = player.x + 16;
 			     }else{
@@ -82,14 +82,19 @@ void updateBubbles(){
 		 	}
 		 	
 		 	
-	  	}
-		/*set_win_tiles(17, 0, 1U, 1U, &hub_bubble);
-		set_win_tiles(18, 0, 1U, 1U, &hub_bubble);		
-		set_win_tiles(19, 0, 1U, 1U, &hub_bubble);		
-		for(j = 0; j < player.used_bubbles; j+=1u){				
-			set_win_tiles(17 + j, 0, 1U, 1U, &hub_no_element);
-		}*/	
+	  	}	
+
+	
   	}
+	set_win_tiles(17, 0, 1U, 1U, &hub_bubble);
+	set_win_tiles(18, 0, 1U, 1U, &hub_bubble);		
+	set_win_tiles(19, 0, 1U, 1U, &hub_bubble);			
+	for(j = 0; j < player.used_bubbles; j+=1u){				
+		set_win_tiles(17 + j, 0, 1U, 1U, &hub_no_element);
+	}  	
+
+  	
+	
 }
 
 
