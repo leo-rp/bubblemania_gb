@@ -77,10 +77,6 @@ void collideWithEnemie(UINT8 i){
 						deactiveEnemie(i);
 						deactiveBubble(j);
 					}
-					
-
-
-					
 				}
 			}
 	}else{
