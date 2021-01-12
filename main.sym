@@ -1,0 +1,63 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |     _DIV_REG   **** GX  |   1 _GAMESTA   0132 GR
+    _LCDC_RE   **** GX  |     _OBP0_RE   **** GX  |     __divuin   **** GX
+    __moduin   **** GX  |   0 _animate   1B95 GR  |   0 _animate   2300 GR
+  0 _animate   2386 GR  |   0 _backgro   074D GR  |   0 _backgro   074B GR
+  0 _backgro   08B5 GR  |   0 _backgro   0749 GR  |   0 _backgro   0747 GR
+  0 _backgro   0743 GR  |   0 _backgro   0745 GR  |   0 _bubble_   0E89 GR
+  1 _bubbles   01A0 GR  |   1 _bubbles   01A3 GR  |   1 _bubbles   019A GR
+  1 _bubbles   019D GR  |   0 _collide   16C2 GR  |   1 _collisi   014A GR
+  0 _deactiv   0000 GR  |   0 _deactiv   1680 GR  |   1 _delay_n   0153 GR
+    _disable   **** GX  |   0 _drawPla   20D9 GR  |   0 _drawPla   203B GR
+  1 _easy_mo   013E GR  |     _enable_   **** GX  |   0 _enemieS   1639 GR
+  0 _enemieS   18BB GR  |   1 _enemie_   0142 GR  |   1 _enemie_   0143 GR
+  1 _enemie_   0144 GR  |   1 _enemie_   0145 GR  |   1 _enemies   0170 GR
+  1 _enemies   0178 GR  |   1 _enemies   0190 GR  |   1 _enemies   0148 GR
+  1 _enemies   0198 GR  |   1 _enemies   0199 GR  |   1 _enemies   0188 GR
+  0 _enemies   0EA9 GR  |   1 _enemies   0180 GR  |   1 _enemies   0160 GR
+  1 _enemies   0168 GR  |   1 _frame_c   0134 GR  |   1 _fx_jump   0146 GR
+  0 _game_ov   10A9 GR  |   1 _game_pl   0133 GR  |   1 _h1        01A9 GR
+  1 _h2        01AD GR  |   1 _hi_scor   013C GR  |   1 _hub       0000 GR
+  0 _hub_bub   126A GR  |   0 _hub_liv   126B GR  |   0 _hub_map   0E75 GR
+  0 _hub_no_   1269 GR  |   1 _i         0130 GR  |   0 _initBub   126C GR
+  0 _initEne   1895 GR  |   0 _initPla   20B2 GR  |     _initran   **** GX
+  1 _j         0131 GR  |     _joypad    **** GX  |   1 _joystat   0137 GR
+  1 _last_ro   0152 GR  |   0 _main      2B2E GR  |   1 _max_ene   0147 GR
+  1 _mbc_ram   014D GR  |     _memcpy    **** GX  |   0 _movePla   224E GR
+  0 _movePla   232B GR  |   0 _movePla   2340 GR  |     _move_sp   **** GX
+    _move_wi   **** GX  |   0 _newBubb   133D GR  |   0 _newEnem   1CDE GR
+  1 _oldjoys   0136 GR  |   0 _playSou   2385 GR  |   1 _player    0154 GR
+  0 _playerJ   2355 GR  |   0 _player_   0043 GR  |     _rand      **** GX
+  1 _random_   014F GR  |   1 _random_   0150 GR  |   1 _s1        01AE GR
+  1 _s2        01AF GR  |   1 _s3        01B0 GR  |   1 _s4        01B1 GR
+  1 _score     013A GR  |     _set_bkg   **** GX  |     _set_bkg   **** GX
+    _set_spr   **** GX  |     _set_spr   **** GX  |     _set_spr   **** GX
+    _set_win   **** GX  |     _set_win   **** GX  |   0 _stateGa   2442 GR
+  0 _stateGa   24E9 GR  |   0 _stateGa   24A3 GR  |   0 _stateGa   28BF GR
+  0 _stateGa   245E GR  |   0 _stateGa   2A88 GR  |   0 _stateGa   2A03 GR
+  0 _stateGa   24B1 GR  |   1 _temp_sc   0138 GR  |   0 _updateB   13D8 GR
+  0 _updateE   18E3 GR  |   0 _updateP   2365 GR  |   0 _updateS   14F6 GR
+  1 _used_en   0149 GR  |   1 _w1        01A8 GR  |   1 _w2        01AC GR
+    _wait_vb   **** GX  |   0 _water     0543 GR  |   1 _water_a   013F GR
+  1 _water_d   0141 GR  |   1 _wave_fi   014B GR  |   1 _wave_st   014C GR
+  1 _x1        01A6 GR  |   1 _x2        01AA GR  |   1 _y1        01A7 GR
+  1 _y2        01AB GR
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size 2B8B   flags    0
+   1 _DATA      size  1B2   flags    0
+   2 _DABS      size    0   flags    8
+   3 _HOME      size    0   flags    0
+   4 _GSINIT    size  5F0   flags    0
+   5 _GSFINAL   size    0   flags    0
+   6 _CABS      size    0   flags    8
+

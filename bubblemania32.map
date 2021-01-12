@@ -1,0 +1,1001 @@
+AREA .  .ABS.
+	RADIX HEX
+	BASE 0000
+	SIZE 0000
+	ATTRIB ABS OVR
+	GLOBALS
+		s__HEADERf	0000
+		l__CABS	0000
+		l__DABS	0000
+		l__HEAP	0000
+		s__CABS	0000
+		s__HEADER0	0000
+		s__DABS	0000
+		s__HEADER1	0000
+		l_.  .ABS.	0000
+		s__HEADER2	0000
+		s__HEADER3	0000
+		s__SFR1a	0000
+		l__GSFINAL	0000
+		s__HEADER4	0000
+		s__SFR2a	0000
+		s__SFR1b	0000
+		s__HEADER5	0000
+		s__SFR2b	0000
+		s__SFR1c	0000
+		s__HEADER6	0000
+		s__SFR2c	0000
+		s__SFR1d	0000
+		s__HEADER7	0000
+		s__SFR2d	0000
+		s__SFR1e	0000
+		l__HRAM	0000
+		s__HEADER8	0000
+		s_.  .ABS.	0000
+		s__SFR2e	0000
+		s__SFR1f	0000
+		s__HEADER9	0000
+		l__HEADER	0000
+		s__SFR2f	0000
+		s__HRAM	0000
+		s__HEADER	0000
+		s__SFR10	0000
+		s__SFRa	0000
+		s__SFR20	0000
+		s__SFR11	0000
+		s__SFRb	0000
+		s__SFR30	0000
+		s__SFR21	0000
+		s__SFR12	0000
+		s__SFRc	0000
+		s__SFR31	0000
+		s__SFR22	0000
+		s__SFR13	0000
+		s__SFRd	0000
+		s__SFR32	0000
+		s__SFR23	0000
+		s__SFR14	0000
+		s__SFRe	0000
+		s__SFR33	0000
+		s__SFR24	0000
+		s__SFR15	0000
+		s__SFRf	0000
+		.init	0000
+		s__SFR34	0000
+		s__SFR25	0000
+		s__SFR16	0000
+		s__SFR35	0000
+		s__SFR26	0000
+		s__SFR17	0000
+		s__SFR36	0000
+		s__SFR27	0000
+		s__SFR18	0000
+		s__SFR28	0000
+		s__SFR19	0000
+		s__SFR29	0000
+		s__SFR0	0000
+		s__SFR1	0000
+		s__SFR2	0000
+		s__SFR3	0000
+		s__SFR4	0000
+		s__SFR5	0000
+		s__SFR6	0000
+		s__SFR7	0000
+		l__LIT	0000
+		s__SFR8	0000
+		s__SFR9	0000
+		l__SFR	0000
+		s__HEADER10	0000
+		s__HEADERa	0000
+		s__SFR	0000
+		s__HEADER11	0000
+		s__HEADERb	0000
+		s__HRAM13	0000
+		s__HEADER12	0000
+		s__HEADERc	0000
+		s__HEADERd	0000
+		s__HEADERe	0000
+		l__HEADER0	0001
+		l__SFR1a	0001
+		l__SFR2a	0001
+		l__SFR1b	0001
+		l__SFR2b	0001
+		l__SFR1c	0001
+		l__SFR2c	0001
+		l__SFR1d	0001
+		l__SFR2d	0001
+		l__SFR1e	0001
+		l__SFR2e	0001
+		l__SFR1f	0001
+		l__SFR2f	0001
+		l__SFR10	0001
+		l__SFRa	0001
+		l__SFR20	0001
+		l__SFR11	0001
+		l__SFRb	0001
+		l__SFR30	0001
+		l__SFR21	0001
+		l__SFR12	0001
+		l__SFRc	0001
+		l__SFR31	0001
+		l__SFR22	0001
+		l__SFR13	0001
+		l__SFRd	0001
+		l__SFR32	0001
+		l__SFR23	0001
+		l__SFR14	0001
+		l__SFRe	0001
+		l__SFR33	0001
+		l__SFR24	0001
+		l__SFR15	0001
+		l__SFRf	0001
+		l__SFR34	0001
+		l__SFR25	0001
+		l__SFR16	0001
+		l__SFR35	0001
+		l__SFR26	0001
+		l__SFR17	0001
+		l__SFR36	0001
+		l__SFR27	0001
+		l__SFR18	0001
+		l__SFR28	0001
+		l__SFR19	0001
+		l__SFR29	0001
+		l__GSINITTAIL	0001
+		l__SFR0	0001
+		l__SFR1	0001
+		l__SFR2	0001
+		l__SFR3	0001
+		l__SFR4	0001
+		l__SFR5	0001
+		l__SFR6	0001
+		l__SFR7	0001
+		l__SFR8	0001
+		l__SFR9	0001
+		l__HEADERa	0001
+		l__HEADERb	0001
+		l__HRAM13	0001
+		l__HEADER12	0001
+		l__HEADERc	0001
+		l__HEADERe	0001
+		l__HEADERf	0001
+		l__HEADER10	0002
+		l__HEADERd	0002
+		l__HEADER9	0003
+		l__HEADER8	0006
+		l__HEADER2	0008
+		l__HEADER3	0008
+		l__HEADER4	0008
+		l__HEADER5	0008
+		l__HEADER1	0010
+		l__HEADER6	0025
+		l__HEADER7	0034
+		l__BSS	005A
+		l__HEADER11	0083
+		l__HOME	01A8
+		l__DATA	01B2
+		s__CODE	0200
+		l__BASE	023B
+		l__GSINIT	05F0
+		l__CODE	2CF1
+		s__HOME	2EF1
+		s__BASE	3099
+		s__LIT	32D4
+		s__GSINIT	32D4
+		s__GSINITTAIL	38C4
+		s__GSFINAL	38C5
+		.OAM	C000
+		s__DATA	C0A0
+		s__BSS	C252
+		s__HEAP	C2AC
+		.STACK	E000
+		.refresh_OAM	FF80
+AREA _CODE
+	RADIX HEX
+	BASE 0200
+	SIZE 2CF1
+	ATTRIB REL CON
+	GLOBALS
+		_deactiveBubble	0200
+		_player_sprites	0243
+		_water	0743
+		_background_tile_map_size	0943
+		_background_tile_map_width	0945
+		_background_tile_map_height	0947
+		_background_tile_data_size	0949
+		_background_tile_count	094B
+		_background_map_data	094D
+		_background_tile_data	0AB5
+		_hub_map	1075
+		_bubble_sprites	1089
+		_enemies_sprites	10A9
+		_game_over	12A9
+		_hub_no_element	1469
+		_hub_bubble	146A
+		_hub_live	146B
+		_initBubbles	146C
+		_newBubble	153D
+		_updateBubbles	15D8
+		_updateScore	16F6
+		_enemieSplash	1839
+		_deactiveEnemie	1880
+		_collideWithEnemie	18C2
+		_initEnemies	1A95
+		_enemieSplashUpdate	1ABB
+		_updateEnemies	1AE3
+		_animateEnemies	1D95
+		_newEnemie	1EDE
+		_drawPlayerlives	223B
+		_initPlayer	22B2
+		_drawPlayer	22D9
+		_movePlayer	244E
+		_animatePlayer	2500
+		_movePlayerToLeft	252B
+		_movePlayerToRight	2540
+		_playerJump	2555
+		_updatePlayer	2565
+		_playSoundJump	2585
+		_animateWater	2586
+		_stateGameBoot	2642
+		_stateGameLogo	265E
+		_stateGameIntro	26A3
+		_stateGameTitle	26B1
+		_stateGameGameOver	26E9
+		_stateGameLoadGameplay	2ABF
+		_stateGamePlayerDie	2C03
+		_stateGamePlay	2C88
+		_main	2D2E
+		__divsuchar	2D8B
+		__modsuchar	2D9A
+		__divuschar	2DA6
+		__moduschar	2DB8
+		__divschar	2DC8
+		__modschar	2DD6
+		__divsint	2DE2
+		__modsint	2DF5
+		__divuchar	2E06
+		__moduchar	2E14
+		__divuint	2E20
+		__moduint	2E33
+		.mod8	2E44
+		.div8	2E44
+		.mod16	2E4C
+		.div16	2E4C
+		.modu8	2E82
+		.divu8	2E82
+		.modu16	2E85
+		.divu16	2E85
+		_rand	2EC6
+		_randw	2EC6
+AREA _HEADER0
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+AREA _HEADER1
+	RADIX HEX
+	BASE 0000
+	SIZE 0010
+	ATTRIB ABS CON
+AREA _HEADER2
+	RADIX HEX
+	BASE 0000
+	SIZE 0008
+	ATTRIB ABS CON
+AREA _HEADER3
+	RADIX HEX
+	BASE 0000
+	SIZE 0008
+	ATTRIB ABS CON
+AREA _HEADER4
+	RADIX HEX
+	BASE 0000
+	SIZE 0008
+	ATTRIB ABS CON
+AREA _HEADER5
+	RADIX HEX
+	BASE 0000
+	SIZE 0008
+	ATTRIB ABS CON
+AREA _HEADER6
+	RADIX HEX
+	BASE 0000
+	SIZE 0025
+	ATTRIB ABS CON
+AREA _HEADER7
+	RADIX HEX
+	BASE 0000
+	SIZE 0034
+	ATTRIB ABS CON
+AREA _HEADER8
+	RADIX HEX
+	BASE 0000
+	SIZE 0006
+	ATTRIB ABS CON
+AREA _HEADER9
+	RADIX HEX
+	BASE 0000
+	SIZE 0003
+	ATTRIB ABS CON
+AREA _HEADERa
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+AREA _HEADERb
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+AREA _HEADERc
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+AREA _HEADERd
+	RADIX HEX
+	BASE 0000
+	SIZE 0002
+	ATTRIB ABS CON
+AREA _HEADERe
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+AREA _HEADERf
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+AREA _HEADER10
+	RADIX HEX
+	BASE 0000
+	SIZE 0002
+	ATTRIB ABS CON
+AREA _HEADER11
+	RADIX HEX
+	BASE 0000
+	SIZE 0083
+	ATTRIB ABS CON
+	GLOBALS
+		_exit	01D0
+AREA _HEADER12
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+AREA _HOME
+	RADIX HEX
+	BASE 2EF1
+	SIZE 01A8
+	ATTRIB REL CON
+	GLOBALS
+		.set_mode	2EF1
+		.remove_VBL	2F01
+		.remove_LCD	2F07
+		.remove_TIM	2F0D
+		.remove_SIO	2F13
+		.remove_JOY	2F19
+		.add_VBL	2F1F
+		.add_LCD	2F25
+		.add_TIM	2F2B
+		.add_SIO	2F31
+		.add_JOY	2F37
+		.remove_int	2F3D
+		.add_int	2F5C
+		.wait_vbl_done	2F78
+		_wait_vbl_done	2F78
+		_display_off	2F8F
+		.display_off	2F8F
+		.serial_IO	2FB0
+		_mode	2FDF
+		_get_mode	2FE8
+		_enable_interrupts	2FED
+		_disable_interrupts	2FEF
+		_reset	2FF1
+		.reset	2FF1
+		_set_interrupts	2FF7
+		_remove_VBL	3002
+		_remove_LCD	300D
+		_remove_TIM	3018
+		_remove_SIO	3023
+		_remove_JOY	302E
+		_add_VBL	3039
+		_add_LCD	3044
+		_add_TIM	304F
+		_add_SIO	305A
+		_add_JOY	3065
+		_clock	3070
+		__printTStates	3079
+		banked_call	307A
+		banked_ret	3091
+AREA _BASE
+	RADIX HEX
+	BASE 3099
+	SIZE 023B
+	ATTRIB REL CON
+	GLOBALS
+		.set_sprite_prop	3099
+		_set_sprite_prop	30A6
+		_move_win	30B1
+		_initrand	30BA
+		.initrand	30BC
+		.mv_sprite	30C5
+		_move_sprite	30D4
+		_set_win_data	30E1
+		_set_bkg_data	30E1
+		_set_sprite_data	30E9
+		_set_win_tiles	315F
+		.padup	3173
+		_waitpadup	3173
+		.jpad	3183
+		.wait_pad	31B0
+		_joypad	31B7
+		_waitpad	31BC
+		_strcpy	31C6
+		_memcpy	31D8
+		_strcmp	31F8
+		.set_sprite_tile	321C
+		_set_sprite_tile	3229
+		.copy_vram	3234
+		_get_data	3243
+		_set_data	3243
+		_set_bkg_tiles	3256
+		.set_xy_wtt	326A
+		.set_xy_btt	327B
+		.set_xy_tt	328A
+		_set_tiles	32BB
+AREA _LIT
+	RADIX HEX
+	BASE 32D4
+	SIZE 0000
+	ATTRIB REL CON
+AREA _GSINIT
+	RADIX HEX
+	BASE 32D4
+	SIZE 05F0
+	ATTRIB REL CON
+	GLOBALS
+		gsinit	32D4
+AREA _GSINITTAIL
+	RADIX HEX
+	BASE 38C4
+	SIZE 0001
+	ATTRIB REL CON
+AREA _GSFINAL
+	RADIX HEX
+	BASE 38C5
+	SIZE 0000
+	ATTRIB REL CON
+AREA _DATA
+	RADIX HEX
+	BASE C0A0
+	SIZE 01B2
+	ATTRIB REL CON
+	GLOBALS
+		_hub	C0A0
+		_i	C1D0
+		_j	C1D1
+		_GAMESTATE	C1D2
+		_game_play_counter	C1D3
+		_frame_counter	C1D4
+		_oldjoystate	C1D6
+		_joystate	C1D7
+		_temp_score	C1D8
+		_score	C1DA
+		_hi_score	C1DC
+		_easy_mode	C1DE
+		_water_animation	C1DF
+		_water_delay	C1E1
+		_enemie_animation_a	C1E2
+		_enemie_animation_b	C1E3
+		_enemie_animation_c	C1E4
+		_enemie_delay	C1E5
+		_fx_jump_finished	C1E6
+		_max_enemies_on_creen	C1E7
+		_enemies_speed	C1E8
+		_used_enemies	C1E9
+		_collision_1	C1EA
+		_wave_fish	C1EB
+		_wave_star	C1EC
+		_mbc_ram_pointer	C1ED
+		_random_number	C1EF
+		_random_seed	C1F0
+		_last_row	C1F2
+		_delay_new_enemie	C1F3
+		_player	C1F4
+		_enemies_x	C200
+		_enemies_y	C208
+		_enemies_active	C210
+		_enemies_direction	C218
+		_enemies_type	C220
+		_enemies_sprite	C228
+		_enemies_jumps	C230
+		_enemies_splash	C238
+		_enemies_splash_delay	C239
+		_bubbles_x	C23A
+		_bubbles_y	C23D
+		_bubbles_active	C240
+		_bubbles_direction	C243
+		_x1	C246
+		_y1	C247
+		_w1	C248
+		_h1	C249
+		_x2	C24A
+		_y2	C24B
+		_w2	C24C
+		_h2	C24D
+		_s1	C24E
+		_s2	C24F
+		_s3	C250
+		_s4	C251
+AREA _BSS
+	RADIX HEX
+	BASE C252
+	SIZE 005A
+	ATTRIB REL CON
+	GLOBALS
+		__cpu	C252
+		.mode	C253
+		__io_out	C254
+		__io_in	C255
+		__io_status	C256
+		.vbl_done	C257
+		_sys_time	C258
+		.sys_time	C258
+		.int_0x40	C25A
+		.int_0x48	C26A
+		.int_0x50	C27A
+		.int_0x58	C28A
+		.int_0x60	C29A
+		.randhi	C2AA
+		.randlo	C2AB
+AREA _HEAP
+	RADIX HEX
+	BASE C2AC
+	SIZE 0000
+	ATTRIB REL CON
+	GLOBALS
+		_malloc_heap_start	C2AC
+AREA _HRAM13
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		__current_bank	FF90
+AREA _SFR0
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_P1_REG	FF00
+AREA _SFR1
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_SB_REG	FF01
+AREA _SFR2
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_SC_REG	FF02
+AREA _SFR3
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_DIV_REG	FF04
+AREA _SFR4
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_TIMA_REG	FF05
+AREA _SFR5
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_TMA_REG	FF06
+AREA _SFR6
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_TAC_REG	FF07
+AREA _SFR7
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_IF_REG	FF0F
+AREA _SFR8
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR10_REG	FF10
+AREA _SFR9
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR11_REG	FF11
+AREA _SFRa
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR12_REG	FF12
+AREA _SFRb
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR13_REG	FF13
+AREA _SFRc
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR14_REG	FF14
+AREA _SFRd
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR21_REG	FF16
+AREA _SFRe
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR22_REG	FF17
+AREA _SFRf
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR23_REG	FF18
+AREA _SFR10
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR24_REG	FF19
+AREA _SFR11
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR30_REG	FF1A
+AREA _SFR12
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR31_REG	FF1B
+AREA _SFR13
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR32_REG	FF1C
+AREA _SFR14
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR33_REG	FF1D
+AREA _SFR15
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR34_REG	FF1E
+AREA _SFR16
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR41_REG	FF20
+AREA _SFR17
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR42_REG	FF21
+AREA _SFR18
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR43_REG	FF22
+AREA _SFR19
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR44_REG	FF23
+AREA _SFR1a
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR50_REG	FF24
+AREA _SFR1b
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR51_REG	FF25
+AREA _SFR1c
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_NR52_REG	FF26
+AREA _SFR1d
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_LCDC_REG	FF40
+AREA _SFR1e
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_STAT_REG	FF41
+AREA _SFR1f
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_SCY_REG	FF42
+AREA _SFR20
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_SCX_REG	FF43
+AREA _SFR21
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_LY_REG	FF44
+AREA _SFR22
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_LYC_REG	FF45
+AREA _SFR23
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_DMA_REG	FF46
+AREA _SFR24
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_BGP_REG	FF47
+AREA _SFR25
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_OBP0_REG	FF48
+AREA _SFR26
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_OBP1_REG	FF49
+AREA _SFR27
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_WY_REG	FF4A
+AREA _SFR28
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_WX_REG	FF4B
+AREA _SFR29
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_KEY1_REG	FF4D
+AREA _SFR2a
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_VBK_REG	FF4F
+AREA _SFR2b
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_HDMA1_REG	FF51
+AREA _SFR2c
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_HDMA2_REG	FF52
+AREA _SFR2d
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_HDMA3_REG	FF53
+AREA _SFR2e
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_HDMA4_REG	FF54
+AREA _SFR2f
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_HDMA5_REG	FF55
+AREA _SFR30
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_RP_REG	FF56
+AREA _SFR31
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_BCPS_REG	FF68
+AREA _SFR32
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_BCPD_REG	FF69
+AREA _SFR33
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_OCPS_REG	FF6A
+AREA _SFR34
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_OCPD_REG	FF6B
+AREA _SFR35
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_SVBK_REG	FF70
+AREA _SFR36
+	RADIX HEX
+	BASE 0000
+	SIZE 0001
+	ATTRIB ABS CON
+	GLOBALS
+		_IE_REG	FFFF
+AREA .  .ABS.
+	RADIX HEX
+	BASE 0000
+	SIZE 0000
+	ATTRIB ABS OVR
+	GLOBALS
+		.__.ABS.	0000
+MODULES
+	FILE c:\gbdk\lib/small/asxxxx/gb/crt0.o
+		NAME Runtime
+	FILE main.o
+		NAME C__Users_leoro_AppData_Local_Tem_NR14_REG
+LIBRARIES
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_prop.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib
+		MODULE div.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE mv_win.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE rand.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE mv_spr.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_data.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE sfr.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_wi_t.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE pad.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib
+		MODULE asm_string.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_spr.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE cpy_data.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_bk_t.o
+	LIBRARY c:\gbdk\lib/small/asxxxx/gb/gb.lib
+		MODULE set_xy_t.o
+USERBASEDEF
+	_CODE=0x0200
+	_DATA=0xC0A0
+	_CODE_1=0x4000
+USERGLOBALDEF
+	.OAM=0xC000
+	.STACK=0xE000
+	.refresh_OAM=0xFF80
+	.init=0x0000
