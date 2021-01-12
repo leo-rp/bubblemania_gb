@@ -1,6 +1,6 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 4.0.4 #11952 (MINGW64)
+; Version 4.0.3 #11875 (MINGW64)
 ;--------------------------------------------------------
 	.module main
 	.optsdcc -mgbz80
@@ -256,614 +256,58 @@ _s4::
 	.area _GSFINAL
 	.area _GSINIT
 ;graphics.c:623: unsigned char hub[] =
-	ld	hl, #_hub
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0001)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0002)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0003)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0004)
-	ld	(hl), #0xb9
-	ld	hl, #(_hub + 0x0005)
-	ld	(hl), #0xb9
-	ld	hl, #(_hub + 0x0006)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0007)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0008)
-	ld	(hl), #0xa9
-	ld	hl, #(_hub + 0x0009)
-	ld	(hl), #0xa9
-	ld	hl, #(_hub + 0x000a)
-	ld	(hl), #0xb1
-	ld	hl, #(_hub + 0x000b)
-	ld	(hl), #0xb1
-	ld	hl, #(_hub + 0x000c)
-	ld	(hl), #0xb9
-	ld	hl, #(_hub + 0x000d)
-	ld	(hl), #0xb9
-	ld	hl, #(_hub + 0x000e)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x000f)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0010)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0011)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0012)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x0013)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x0014)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0015)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0016)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0017)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0018)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x0019)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x001a)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x001b)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x001c)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x001d)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x001e)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x001f)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x0020)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0021)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0022)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0023)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0024)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0025)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0026)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x0027)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x0028)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x0029)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x002a)
-	ld	(hl), #0xcf
-	ld	hl, #(_hub + 0x002b)
-	ld	(hl), #0xcf
-	ld	hl, #(_hub + 0x002c)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x002d)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x002e)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x002f)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x0030)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0031)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0032)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0033)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0034)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0035)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0036)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x0037)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x0038)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x0039)
-	ld	(hl), #0xe3
-	ld	hl, #(_hub + 0x003a)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x003b)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x003c)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x003d)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x003e)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x003f)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0040)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0041)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0042)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0043)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0044)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0045)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0046)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0047)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0048)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0049)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x004a)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x004b)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x004c)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x004d)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x004e)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x004f)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x0050)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0051)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0052)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x0053)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x0054)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x0055)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x0056)
-	ld	(hl), #0x83
-	ld	hl, #(_hub + 0x0057)
-	ld	(hl), #0x83
-	ld	hl, #(_hub + 0x0058)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x0059)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x005a)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x005b)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x005c)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x005d)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x005e)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x005f)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0060)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0061)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0062)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0063)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0064)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0065)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0066)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x0067)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x0068)
-	ld	(hl), #0x83
-	ld	hl, #(_hub + 0x0069)
-	ld	(hl), #0x83
-	ld	hl, #(_hub + 0x006a)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x006b)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x006c)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x006d)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x006e)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x006f)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0070)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0071)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0072)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x0073)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x0074)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x0075)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x0076)
-	ld	(hl), #0xf3
-	ld	hl, #(_hub + 0x0077)
-	ld	(hl), #0xf3
-	ld	hl, #(_hub + 0x0078)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x0079)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x007a)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x007b)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x007c)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x007d)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x007e)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x007f)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x0080)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0081)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0082)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0083)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0084)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0085)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0086)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0087)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0088)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0089)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x008a)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x008b)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x008c)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x008d)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x008e)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x008f)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0090)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0091)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0092)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0093)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0094)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0095)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0096)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0097)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x0098)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x0099)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x009a)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x009b)
-	ld	(hl), #0xf9
-	ld	hl, #(_hub + 0x009c)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x009d)
-	ld	(hl), #0x99
-	ld	hl, #(_hub + 0x009e)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x009f)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x00a0)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a1)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a2)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a3)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a4)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a5)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a6)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a7)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a8)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00a9)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00aa)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00ab)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00ac)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00ad)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00ae)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00af)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00b0)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00b1)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00b2)
-	ld	(hl), #0xbb
-	ld	hl, #(_hub + 0x00b3)
-	ld	(hl), #0xbb
-	ld	hl, #(_hub + 0x00b4)
-	ld	(hl), #0x11
-	ld	hl, #(_hub + 0x00b5)
-	ld	(hl), #0x11
-	ld	hl, #(_hub + 0x00b6)
-	ld	(hl), #0x01
-	ld	hl, #(_hub + 0x00b7)
-	ld	(hl), #0x01
-	ld	hl, #(_hub + 0x00b8)
-	ld	(hl), #0x83
-	ld	hl, #(_hub + 0x00b9)
-	ld	(hl), #0x83
-	ld	hl, #(_hub + 0x00ba)
-	ld	(hl), #0xc7
-	ld	hl, #(_hub + 0x00bb)
-	ld	(hl), #0xc7
-	ld	hl, #(_hub + 0x00bc)
-	ld	(hl), #0xef
-	ld	hl, #(_hub + 0x00bd)
-	ld	(hl), #0xef
-	ld	hl, #(_hub + 0x00be)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00bf)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00c0)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00c1)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00c2)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00c3)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00c4)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00c5)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00c6)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x00c7)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x00c8)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00c9)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00ca)
-	ld	(hl), #0xfc
-	ld	hl, #(_hub + 0x00cb)
-	ld	(hl), #0xfc
-	ld	hl, #(_hub + 0x00cc)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00cd)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00ce)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00cf)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00d0)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00d1)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00d2)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00d3)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00d4)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00d5)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00d6)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x00d7)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x00d8)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x00d9)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x00da)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x00db)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x00dc)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00dd)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00de)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00df)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00e0)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00e1)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00e2)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00e3)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00e4)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00e5)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00e6)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00e7)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00e8)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00e9)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00ea)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00eb)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00ec)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00ed)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00ee)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00ef)
-	ld	(hl), #0xc1
-	ld	hl, #(_hub + 0x00f0)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00f1)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x00f2)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x00f3)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x00f4)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00f5)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00f6)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00f7)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00f8)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x00f9)
-	ld	(hl), #0x81
-	ld	hl, #(_hub + 0x00fa)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00fb)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00fc)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00fd)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00fe)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x00ff)
-	ld	(hl), #0x9c
-	ld	hl, #(_hub + 0x0100)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0101)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0102)
-	ld	(hl), #0x80
-	ld	hl, #(_hub + 0x0103)
-	ld	(hl), #0x80
-	ld	hl, #(_hub + 0x0104)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x0105)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x0106)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x0107)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x0108)
-	ld	(hl), #0x83
-	ld	hl, #(_hub + 0x0109)
-	ld	(hl), #0x83
-	ld	hl, #(_hub + 0x010a)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x010b)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x010c)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x010d)
-	ld	(hl), #0x9f
-	ld	hl, #(_hub + 0x010e)
-	ld	(hl), #0x80
-	ld	hl, #(_hub + 0x010f)
-	ld	(hl), #0x80
-	ld	hl, #(_hub + 0x0110)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0111)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0112)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0113)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0114)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x0115)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x0116)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x0117)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x0118)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0119)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x011a)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x011b)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x011c)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x011d)
-	ld	(hl), #0xe7
-	ld	hl, #(_hub + 0x011e)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x011f)
-	ld	(hl), #0xff
-	ld	hl, #(_hub + 0x0120)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0121)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x0122)
-	ld	(hl), #0xbd
-	ld	hl, #(_hub + 0x0123)
-	ld	(hl), #0xbd
-	ld	hl, #(_hub + 0x0124)
-	ld	(hl), #0x6e
-	ld	hl, #(_hub + 0x0125)
-	ld	(hl), #0x6e
-	ld	hl, #(_hub + 0x0126)
-	ld	(hl), #0x5e
-	ld	hl, #(_hub + 0x0127)
-	ld	(hl), #0x5e
-	ld	hl, #(_hub + 0x0128)
-	ld	(hl), #0x7a
-	ld	hl, #(_hub + 0x0129)
-	ld	(hl), #0x7a
-	ld	hl, #(_hub + 0x012a)
-	ld	(hl), #0x76
-	ld	hl, #(_hub + 0x012b)
-	ld	(hl), #0x76
-	ld	hl, #(_hub + 0x012c)
-	ld	(hl), #0xbd
-	ld	hl, #(_hub + 0x012d)
-	ld	(hl), #0xbd
-	ld	hl, #(_hub + 0x012e)
-	ld	(hl), #0xc3
-	ld	hl, #(_hub + 0x012f)
-	ld	(hl), #0xc3
+	ld	bc, #_hub+0
+	ld	e, c
+	ld	d, b
+	call	__initrleblock
+	.db	#24
+	.db	#0xFF, #0xFF, #0xC3, #0xC3, #0xB9, #0xB9, #0x99, #0x99
+	.db	#0xA9, #0xA9, #0xB1, #0xB1, #0xB9, #0xB9, #0xC3, #0xC3
+	.db	#0xFF, #0xFF, #0xE3, #0xE3, #0xC3, #0xC3, #0xC3, #0xC3
+	.db	#-6, #0xe3
+	.db	#36
+	.db	#0xC1, #0xC1, #0xFF, #0xFF, #0xC3, #0xC3, #0x99, #0x99
+	.db	#0xF9, #0xF9, #0xE3, #0xE3, #0xCF, #0xCF, #0x9F, #0x9F
+	.db	#0x81, #0x81, #0xFF, #0xFF, #0xC3, #0xC3, #0x99, #0x99
+	.db	#0xF9, #0xF9, #0xE3, #0xE3, #0xF9, #0xF9, #0x99, #0x99
+	.db	#0xC3, #0xC3, #0xFF, #0xFF
+	.db	#-8, #0x99
+	.db	#46
+	.db	#0xC1, #0xC1, #0xF9, #0xF9, #0xF9, #0xF9, #0xFF, #0xFF
+	.db	#0x81, #0x81, #0x9F, #0x9F, #0x83, #0x83, #0xF9, #0xF9
+	.db	#0xF9, #0xF9, #0x99, #0x99, #0xC3, #0xC3, #0xFF, #0xFF
+	.db	#0xC3, #0xC3, #0x99, #0x99, #0x9F, #0x9F, #0x83, #0x83
+	.db	#0x99, #0x99, #0x99, #0x99, #0xC3, #0xC3, #0xFF, #0xFF
+	.db	#0x81, #0x81, #0xF9, #0xF9, #0xF3, #0xF3
+	.db	#-8, #0xe7
+	.db	#32
+	.db	#0xFF, #0xFF, #0xC3, #0xC3, #0x99, #0x99, #0x99, #0x99
+	.db	#0xC3, #0xC3, #0x99, #0x99, #0x99, #0x99, #0xC3, #0xC3
+	.db	#0xFF, #0xFF, #0xC3, #0xC3, #0x99, #0x99, #0x99, #0x99
+	.db	#0xC1, #0xC1, #0xF9, #0xF9, #0x99, #0x99, #0xC3, #0xC3
+	.db	#-18, #0xff
+	.db	#36
+	.db	#0xBB, #0xBB, #0x11, #0x11, #0x01, #0x01, #0x83, #0x83
+	.db	#0xC7, #0xC7, #0xEF, #0xEF, #0xFF, #0xFF, #0xFF, #0xFF
+	.db	#0xC1, #0xC1, #0x9C, #0x9C, #0x9F, #0x9F, #0xC1, #0xC1
+	.db	#0xFC, #0xFC, #0x9C, #0x9C, #0xC1, #0xC1, #0xFF, #0xFF
+	.db	#0xC1, #0xC1, #0x9C, #0x9C
+	.db	#-6, #0x9f
+	.db	#8
+	.db	#0x9C, #0x9C, #0xC1, #0xC1, #0xFF, #0xFF, #0xC1, #0xC1
+	.db	#-10, #0x9c
+	.db	#12
+	.db	#0xC1, #0xC1, #0xFF, #0xFF, #0x81, #0x81, #0x9C, #0x9C
+	.db	#0x9C, #0x9C, #0x81, #0x81
+	.db	#-6, #0x9c
+	.db	#48
+	.db	#0xFF, #0xFF, #0x80, #0x80, #0x9F, #0x9F, #0x9F, #0x9F
+	.db	#0x83, #0x83, #0x9F, #0x9F, #0x9F, #0x9F, #0x80, #0x80
+	.db	#0xFF, #0xFF, #0xFF, #0xFF, #0xE7, #0xE7, #0xE7, #0xE7
+	.db	#0xFF, #0xFF, #0xE7, #0xE7, #0xE7, #0xE7, #0xFF, #0xFF
+	.db	#0xC3, #0xC3, #0xBD, #0xBD, #0x6E, #0x6E, #0x5E, #0x5E
+	.db	#0x7A, #0x7A, #0x76, #0x76, #0xBD, #0xBD, #0xC3, #0xC3
+	.db	#0
 ;--------------------------------------------------------
 ; Home
 ;--------------------------------------------------------
@@ -913,15 +357,15 @@ _deactiveBubble::
 	ld	a, (hl)
 	add	a, #0x08
 	ld	e, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+0
-	xor	a, a
+	ld	d, #0x00
 	ld	l, e
-	ld	h, a
+	ld	h, d
 	add	hl, hl
 	add	hl, hl
 	add	hl, bc
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x00
 	ld	(hl+), a
 	ld	(hl), #0x00
@@ -5640,32 +5084,32 @@ _initBubbles::
 ;bubbles.c:25: player.used_bubbles = 0;
 	ld	hl, #(_player + 0x0008)
 	ld	(hl), #0x00
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0022)
 	ld	(hl), #0x50
 	ld	hl, #(_shadow_OAM + 0x0026)
 	ld	(hl), #0x50
 	ld	hl, #(_shadow_OAM + 0x002a)
 	ld	(hl), #0x50
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+32
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
 	xor	a, a
 	ld	(bc), a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+36
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
 	xor	a, a
 	ld	(bc), a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+40
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
@@ -5905,9 +5349,10 @@ _updateBubbles::
 	ld	c, a
 	ld	a, (hl)
 	add	a, #0x08
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
-	ld	l, a
+	ld	e, a
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	h, #0x00
+	ld	l, e
 	add	hl, hl
 	add	hl, hl
 	ld	a, l
@@ -5916,7 +5361,7 @@ _updateBubbles::
 	ld	a, h
 	adc	a, #>(_shadow_OAM)
 	ld	d, a
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ldhl	sp,	#0
 	ld	a, (hl)
 	ld	(de), a
@@ -6233,7 +5678,7 @@ _enemieSplash::
 ;enemies.c:2: enemies_splash_delay = 100u;
 	ld	hl, #_enemies_splash_delay
 	ld	(hl), #0x64
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x002e)
 	ld	(hl), #0x52
 	ld	hl, #(_shadow_OAM + 0x0032)
@@ -6243,9 +5688,9 @@ _enemieSplash::
 	ld	a, (hl-)
 	ld	b, a
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x002c)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -6253,9 +5698,9 @@ _enemieSplash::
 	ld	a, c
 	add	a, #0x08
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0030)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -6340,7 +5785,6 @@ _collideWithEnemie::
 	ld	hl, #_h1
 	ld	(hl), #0x18
 ;enemies.c:26: x2 = enemies_x[i];							     		
-;c
 	ld	de, #_enemies_x
 	ldhl	sp,	#8
 	ld	l, (hl)
@@ -6357,19 +5801,16 @@ _collideWithEnemie::
 	ld	hl, #_w2
 	ld	(hl), #0x0f
 ;enemies.c:28: y2 = enemies_y[i] + 4;
-;c
 	ld	de, #_enemies_y
 	ldhl	sp,	#8
 	ld	l, (hl)
 	ld	h, #0x00
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	a, d
 	ld	(hl-), a
 	ld	a, (hl+)
 	ld	e, a
@@ -6420,20 +5861,16 @@ _collideWithEnemie::
 ;enemies.c:39: for( j = 0; j != MAX_BUBBLES_ON_SCREEN; j+=1u){
 	ld	hl, #_j
 	ld	(hl), #0x00
-;c
 	ld	de, #_enemies_type
 	ldhl	sp,	#8
 	ld	l, (hl)
 	ld	h, #0x00
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#6
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#5
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#4
+	ld	(hl+), a
+	ld	(hl), d
 00122$:
 ;enemies.c:40: if(bubbles_active[j]){
 	ld	a, #<(_bubbles_active)
@@ -6652,17 +6089,17 @@ _enemieSplashUpdate::
 	dec	(hl)
 	ret
 00102$:
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+44
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
 	xor	a, a
 	ld	(bc), a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+48
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
@@ -6897,27 +6334,26 @@ _updateEnemies::
 	ld	a, (hl)
 	add	a, #0x10
 	ld	e, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	bc, #_shadow_OAM+0
-	xor	a, a
+	ld	d, #0x00
 	ld	l, e
-	ld	h, a
+	ld	h, d
 	add	hl, hl
 	add	hl, hl
 	add	hl, bc
 	inc	hl
 	inc	hl
-	ld	a,h
 	ld	(hl), #0x6a
 ;enemies.c:174: set_sprite_tile(28 + i, 0x6C );										
 	ld	a, (#_i)
 	add	a, #0x1c
 	ld	e, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	bc, #_shadow_OAM+0
-	xor	a, a
+	ld	d, #0x00
 	ld	l, e
-	ld	h, a
+	ld	h, d
 	add	hl, hl
 	add	hl, hl
 	add	hl, bc
@@ -6962,7 +6398,7 @@ _updateEnemies::
 	ld	a, (hl)
 	add	a, #0x10
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	h, #0x00
 	ld	l, c
 	add	hl, hl
@@ -6976,7 +6412,7 @@ _updateEnemies::
 	ld	a, (#_i)
 	add	a, #0x1c
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	h, #0x00
 	ld	l, c
 	add	hl, hl
@@ -7099,14 +6535,14 @@ _updateEnemies::
 	ld	a, (hl)
 	add	a, #0x10
 	ld	e, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	h, #0x00
 	ld	l, e
 	add	hl, hl
 	add	hl, hl
 	ld	de, #_shadow_OAM
 	add	hl, de
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, c
 	ld	(hl+), a
 	ld	(hl), b
@@ -7132,14 +6568,14 @@ _updateEnemies::
 	ld	a, (hl)
 	add	a, #0x1c
 	ld	e, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	h, #0x00
 	ld	l, e
 	add	hl, hl
 	add	hl, hl
 	ld	de, #_shadow_OAM
 	add	hl, de
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, c
 	ld	(hl+), a
 	ld	(hl), b
@@ -7192,7 +6628,6 @@ _animateEnemies::
 	ld	a, (bc)
 	ld	c, a
 ;enemies.c:238: if(enemies_direction[i]){
-;c
 	ld	de, #_enemies_direction
 	ld	l, (hl)
 	ld	h, #0x00
@@ -7257,7 +6692,7 @@ _animateEnemies::
 ;enemies.c:239: set_sprite_tile(16 + i, 0x5E + enemie_animation_b);
 	ldhl	sp,	#2
 	ld	e, (hl)
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	d, #0x00
 	ld	l, e
 	ld	h, d
@@ -7275,7 +6710,7 @@ _animateEnemies::
 	ld	a, (#_i)
 	add	a, #0x1c
 	ld	e, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	d, #0x00
 	ld	l, e
 	ld	h, d
@@ -7292,7 +6727,7 @@ _animateEnemies::
 ;enemies.c:242: set_sprite_tile(28 + i, 0x5E + enemie_animation_b);
 	ldhl	sp,	#3
 	ld	e, (hl)
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	d, #0x00
 	ld	l, e
 	ld	h, d
@@ -7310,7 +6745,7 @@ _animateEnemies::
 	ld	a, (#_i)
 	add	a, #0x10
 	ld	e, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	d, #0x00
 	ld	l, e
 	ld	h, d
@@ -7352,22 +6787,16 @@ _animateEnemies::
 ;enemies.c:255: set_sprite_tile(16 + i, 0x56 + enemie_animation_a);
 	ldhl	sp,	#2
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
-	xor	a, a
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
+	ld	h, #0x00
 	ld	l, c
-	ld	h, a
 	add	hl, hl
 	add	hl, hl
-	ld	a, l
-	add	a, #<(_shadow_OAM)
-	ld	c, a
-	ld	a, h
-	adc	a, #>(_shadow_OAM)
-	ld	b, a
-	inc	bc
-	inc	bc
-	ld	a, e
-	ld	(bc), a
+	ld	bc, #_shadow_OAM
+	add	hl, bc
+	inc	hl
+	inc	hl
+	ld	(hl), e
 ;enemies.c:256: set_sprite_tile(28 + i, 0x58 + enemie_animation_a);
 	ld	a, (#_enemie_animation_a)
 	add	a, #0x58
@@ -7375,7 +6804,7 @@ _animateEnemies::
 	ld	a, (#_i)
 	add	a, #0x1c
 	ld	b, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	de, #_shadow_OAM+0
 	ld	h, #0x00
 	ld	l, b
@@ -7394,7 +6823,7 @@ _animateEnemies::
 ;enemies.c:258: set_sprite_tile(28 + i, 0x56 + enemie_animation_a);
 	ldhl	sp,	#3
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	h, #0x00
 	ld	l, c
 	add	hl, hl
@@ -7411,7 +6840,7 @@ _animateEnemies::
 	ld	a, (#_i)
 	add	a, #0x10
 	ld	b, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	de, #_shadow_OAM+0
 	ld	h, #0x00
 	ld	l, b
@@ -7518,59 +6947,48 @@ _newEnemie::
 ;enemies.c:283: case 2 : //fish
 00101$:
 ;enemies.c:284: enemies_y[i] = 7;
-;c
 	ld	de, #_enemies_y
 	ld	hl, #_i
 	ld	l, (hl)
 	ld	h, #0x00
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
 	push	bc
 	ld	(hl), #0x07
 ;enemies.c:285: enemies_jumps[i] = 0;
-;c
 	ld	de, #_enemies_jumps
 	ld	hl, #_i
 	ld	l, (hl)
 	ld	h, #0x00
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
 	push	bc
 	ld	(hl), #0x00
 ;enemies.c:286: last_row = enemies_y[i];			     	
-;c
 	ld	de, #_enemies_y
 	ld	hl, #_i
 	ld	l, (hl)
 	ld	h, #0x00
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#3
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#2
+	ld	d, h
+	ldhl	sp,	#1
+	ld	(hl+), a
+	ld	a, d
 	ld	(hl-), a
 	ld	a, (hl+)
 	ld	e, a
@@ -7597,19 +7015,16 @@ _newEnemie::
 	ld	a, (hl)
 	ld	(de), a
 ;enemies.c:289: if(enemies_direction[i]){
-;c
 	ld	de, #_enemies_direction
 	ld	hl, #_i
 	ld	l, (hl)
 	ld	h, #0x00
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	a, d
 	ld	(hl-), a
 	ld	a, (hl+)
 	ld	e, a
@@ -7620,20 +7035,16 @@ _newEnemie::
 	or	a, a
 	jp	Z, 00103$
 ;enemies.c:290: enemies_x[i] = 0;	
-;c
 	ld	de, #_enemies_x
 	ld	hl, #_i
 	ld	l, (hl)
 	ld	h, #0x00
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -7646,43 +7057,42 @@ _newEnemie::
 	ld	a, (hl)
 	add	a, #0x10
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00220$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00220$
-;c
+	ld	de, #_shadow_OAM
 	dec	hl
 	ld	a, (hl+)
-	ld	e, a
-	ld	d, (hl)
-	ld	hl, #_shadow_OAM
+	ld	h, (hl)
+	ld	l, a
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -7693,43 +7103,42 @@ _newEnemie::
 	add	a, #0x1c
 	ldhl	sp,	#3
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00221$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00221$
-;c
+	ld	de, #_shadow_OAM
 	dec	hl
 	ld	a, (hl+)
-	ld	e, a
-	ld	d, (hl)
-	ld	hl, #_shadow_OAM
+	ld	h, (hl)
+	ld	l, a
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -7740,43 +7149,42 @@ _newEnemie::
 	add	a, #0x10
 	ldhl	sp,	#3
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00222$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00222$
-;c
+	ld	de, #_shadow_OAM
 	dec	hl
 	ld	a, (hl+)
-	ld	e, a
-	ld	d, (hl)
-	ld	hl, #_shadow_OAM
+	ld	h, (hl)
+	ld	l, a
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -7787,43 +7195,42 @@ _newEnemie::
 	add	a, #0x1c
 	ldhl	sp,	#3
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00223$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00223$
-;c
+	ld	de, #_shadow_OAM
 	dec	hl
 	ld	a, (hl+)
-	ld	e, a
-	ld	d, (hl)
-	ld	hl, #_shadow_OAM
+	ld	h, (hl)
+	ld	l, a
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -7848,43 +7255,42 @@ _newEnemie::
 	add	a, #0x1c
 	ldhl	sp,	#3
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00225$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00225$
-;c
+	ld	de, #_shadow_OAM
 	dec	hl
 	ld	a, (hl+)
-	ld	e, a
-	ld	d, (hl)
-	ld	hl, #_shadow_OAM
+	ld	h, (hl)
+	ld	l, a
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -7895,43 +7301,42 @@ _newEnemie::
 	add	a, #0x10
 	ldhl	sp,	#3
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00226$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00226$
-;c
+	ld	de, #_shadow_OAM
 	dec	hl
 	ld	a, (hl+)
-	ld	e, a
-	ld	d, (hl)
-	ld	hl, #_shadow_OAM
+	ld	h, (hl)
+	ld	l, a
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -7942,43 +7347,42 @@ _newEnemie::
 	add	a, #0x10
 	ldhl	sp,	#3
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00227$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00227$
-;c
+	ld	de, #_shadow_OAM
 	dec	hl
 	ld	a, (hl+)
-	ld	e, a
-	ld	d, (hl)
-	ld	hl, #_shadow_OAM
+	ld	h, (hl)
+	ld	l, a
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -7989,43 +7393,42 @@ _newEnemie::
 	add	a, #0x1c
 	ldhl	sp,	#3
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00228$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00228$
-;c
+	ld	de, #_shadow_OAM
 	dec	hl
 	ld	a, (hl+)
-	ld	e, a
-	ld	d, (hl)
-	ld	hl, #_shadow_OAM
+	ld	h, (hl)
+	ld	l, a
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8129,21 +7532,24 @@ _newEnemie::
 	ld	a, (hl)
 	add	a, #0x10
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00232$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00232$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8152,20 +7558,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8178,21 +7580,24 @@ _newEnemie::
 	ld	a, (hl)
 	add	a, #0x1c
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00233$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00233$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8201,20 +7606,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8227,21 +7628,24 @@ _newEnemie::
 	ld	a, (hl)
 	add	a, #0x10
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00234$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00234$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8250,20 +7654,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8276,21 +7676,24 @@ _newEnemie::
 	ld	a, (hl)
 	add	a, #0x1c
 	ld	(hl), a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	a, (hl-)
 	ld	(hl), a
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00235$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00235$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8299,20 +7702,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8427,21 +7826,24 @@ _newEnemie::
 	ld	a, (hl)
 	add	a, #0x10
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ldhl	sp,	#2
 	ld	(hl), c
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00239$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00239$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8450,20 +7852,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8473,21 +7871,24 @@ _newEnemie::
 	ld	a, (#_i)
 	add	a, #0x1c
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ldhl	sp,	#2
 	ld	(hl), c
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00240$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00240$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8496,20 +7897,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8519,21 +7916,24 @@ _newEnemie::
 	ld	a, (#_i)
 	add	a, #0x10
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ldhl	sp,	#2
 	ld	(hl), c
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00241$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00241$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8542,20 +7942,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8565,21 +7961,24 @@ _newEnemie::
 	ld	a, (#_i)
 	add	a, #0x1c
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ldhl	sp,	#2
 	ld	(hl), c
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00242$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00242$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8588,20 +7987,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8624,21 +8019,24 @@ _newEnemie::
 	ld	a, (hl)
 	add	a, #0x10
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ldhl	sp,	#2
 	ld	(hl), c
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00243$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00243$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8647,20 +8045,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8670,21 +8064,24 @@ _newEnemie::
 	ld	a, (#_i)
 	add	a, #0x1c
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ldhl	sp,	#2
 	ld	(hl), c
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00244$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00244$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8693,20 +8090,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0002
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8716,21 +8109,24 @@ _newEnemie::
 	ld	a, (#_i)
 	add	a, #0x10
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ldhl	sp,	#2
 	ld	(hl), c
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00245$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00245$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8739,20 +8135,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8762,21 +8154,24 @@ _newEnemie::
 	ld	a, (#_i)
 	add	a, #0x1c
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ldhl	sp,	#2
 	ld	(hl), c
 	xor	a, a
 	inc	hl
+	ld	(hl-), a
+	ld	a, (hl)
+	ld	(hl+), a
+	ld	a, (hl)
 	ld	(hl), a
 	ld	a, #0x02
 00246$:
-	ldhl	sp,	#2
+	dec	hl
 	sla	(hl)
 	inc	hl
 	rl	(hl)
 	dec	a
 	jr	NZ, 00246$
-;c
 	dec	hl
 	ld	a, (hl+)
 	ld	e, a
@@ -8785,20 +8180,16 @@ _newEnemie::
 	add	hl, de
 	inc	sp
 	inc	sp
-;c
 	ld	e, l
 	ld	d, h
 	push	de
 	ld	hl, #0x0003
 	add	hl, de
-	push	hl
 	ld	a, l
-	ldhl	sp,	#4
-	ld	(hl), a
-	pop	hl
-	ld	a, h
-	ldhl	sp,	#3
-	ld	(hl), a
+	ld	d, h
+	ldhl	sp,	#2
+	ld	(hl+), a
+	ld	(hl), d
 	pop	bc
 	pop	hl
 	push	hl
@@ -8943,55 +8334,55 @@ _drawPlayer::
 ;player.c:25: set_sprite_tile(0, player.sprite_index + 10U);
 	add	a, #0x0a
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0002)
 	ld	(hl), c
 ;player.c:26: set_sprite_tile(1, player.sprite_index + 8U);	
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x08
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0006)
 	ld	(hl), c
 ;player.c:27: set_sprite_tile(2, player.sprite_index + 14U);
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x0e
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x000a)
 	ld	(hl), c
 ;player.c:28: set_sprite_tile(3, player.sprite_index + 12U);		
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x0c
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x000e)
 	ld	(hl), c
 ;player.c:29: set_sprite_tile(4, player.sprite_index + 2U);	
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x02
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0012)
 	ld	(hl), c
 ;player.c:30: set_sprite_tile(5, player.sprite_index);
 	ld	hl, #(_player + 0x000a)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0016)
 	ld	(hl), c
 ;player.c:31: set_sprite_tile(6, player.sprite_index + 6U);		
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x06
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x001a)
 	ld	(hl), c
 ;player.c:32: set_sprite_tile(7, player.sprite_index + 4U);			
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x04
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x001e)
 	ld	(hl), c
 ;player.c:32: set_sprite_tile(7, player.sprite_index + 4U);			
@@ -8999,56 +8390,56 @@ _drawPlayer::
 00102$:
 ;player.c:34: set_sprite_tile(0, player.sprite_index);
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0002)
 	ld	(hl), c
 ;player.c:35: set_sprite_tile(1, player.sprite_index + 2U);	
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x02
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0006)
 	ld	(hl), c
 ;player.c:36: set_sprite_tile(2, player.sprite_index + 4U);
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x04
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x000a)
 	ld	(hl), c
 ;player.c:37: set_sprite_tile(3, player.sprite_index + 6U);		
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x06
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x000e)
 	ld	(hl), c
 ;player.c:38: set_sprite_tile(4, player.sprite_index + 8U);	
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x08
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0012)
 	ld	(hl), c
 ;player.c:39: set_sprite_tile(5, player.sprite_index + 10U);
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x0a
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0016)
 	ld	(hl), c
 ;player.c:40: set_sprite_tile(6, player.sprite_index + 12U);		
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x0c
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x001a)
 	ld	(hl), c
 ;player.c:41: set_sprite_tile(7, player.sprite_index + 14U);
 	ld	a, (#(_player + 0x000a) + 0)
 	add	a, #0x0e
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x001e)
 	ld	(hl), c
 ;player.c:41: set_sprite_tile(7, player.sprite_index + 14U);
@@ -9056,49 +8447,49 @@ _drawPlayer::
 ;player.c:43: set_sprite_prop(0, player.sprite_hflip);
 	ld	hl, #(_player + 0x0009)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x0003)
 	ld	(hl), c
 ;player.c:44: set_sprite_prop(1, player.sprite_hflip);
 	ld	hl, #(_player + 0x0009)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x0007)
 	ld	(hl), c
 ;player.c:45: set_sprite_prop(2, player.sprite_hflip);
 	ld	hl, #(_player + 0x0009)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x000b)
 	ld	(hl), c
 ;player.c:46: set_sprite_prop(3, player.sprite_hflip);
 	ld	hl, #(_player + 0x0009)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x000f)
 	ld	(hl), c
 ;player.c:47: set_sprite_prop(4, player.sprite_hflip);
 	ld	hl, #(_player + 0x0009)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x0013)
 	ld	(hl), c
 ;player.c:48: set_sprite_prop(5, player.sprite_hflip);
 	ld	hl, #(_player + 0x0009)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x0017)
 	ld	(hl), c
 ;player.c:49: set_sprite_prop(6, player.sprite_hflip);
 	ld	hl, #(_player + 0x0009)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x001b)
 	ld	(hl), c
 ;player.c:50: set_sprite_prop(7, player.sprite_hflip);
 	ld	hl, #(_player + 0x0009)
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x001f)
 	ld	(hl), c
 ;player.c:50: set_sprite_prop(7, player.sprite_hflip);
@@ -9115,9 +8506,9 @@ _movePlayer::
 	ld	b, (hl)
 	ld	hl, #_player
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #_shadow_OAM
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -9127,9 +8518,9 @@ _movePlayer::
 	ld	a, (#_player + 0)
 	add	a, #0x08
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0004)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -9139,9 +8530,9 @@ _movePlayer::
 	ld	a, (#_player + 0)
 	add	a, #0x10
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0010)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -9151,9 +8542,9 @@ _movePlayer::
 	ld	a, (#_player + 0)
 	add	a, #0x18
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0014)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -9168,9 +8559,9 @@ _movePlayer::
 	ld	(hl), b
 	ld	hl, #_player
 	ld	c, (hl)
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	de, #_shadow_OAM+8
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ldhl	sp,	#0
 	ld	a, (hl)
 	ld	(de), a
@@ -9181,9 +8572,9 @@ _movePlayer::
 	ld	a, (#_player + 0)
 	add	a, #0x08
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x000c)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -9191,9 +8582,9 @@ _movePlayer::
 	ld	a, (#_player + 0)
 	add	a, #0x10
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0018)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -9201,9 +8592,9 @@ _movePlayer::
 	ld	a, (#_player + 0)
 	add	a, #0x18
 	ld	c, a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x001c)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, b
 	ld	(hl+), a
 	ld	(hl), c
@@ -9314,18 +8705,21 @@ _playerJump::
 ; ---------------------------------
 _updatePlayer::
 ;player.c:107: if(player.y_speed != 0x00){
-	ld	hl, #_player + 4
-	ld	a, (hl)
+	ld	de, #_player + 4
+	ld	a, (de)
 	or	a, a
 	jr	Z, 00102$
 ;player.c:108: player.y_speed-= 0x01;
 	dec	a
-	ld	(hl), a
+	ld	(de), a
 00102$:
 ;player.c:111: player.y-= player.y_speed;				
 	ld	bc, #_player + 1
 	ld	a, (bc)
-	ld	e, (hl)
+	push	af
+	ld	a, (de)
+	ld	e, a
+	pop	af
 	sub	a, e
 	ld	(bc), a
 ;player.c:113: player.y+= GRAVITY;	
@@ -9638,7 +9032,7 @@ _stateGameGameOver::
 	inc	sp
 	call	_set_sprite_data
 	add	sp, #4
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0002)
 	ld	(hl), #0x00
 	ld	hl, #(_shadow_OAM + 0x0006)
@@ -9655,7 +9049,7 @@ _stateGameGameOver::
 	ld	(hl), #0x06
 	ld	hl, #(_shadow_OAM + 0x001e)
 	ld	(hl), #0x0c
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x0003)
 	ld	(hl), #0x00
 	ld	hl, #(_shadow_OAM + 0x0007)
@@ -9672,51 +9066,51 @@ _stateGameGameOver::
 	ld	(hl), #0x00
 	ld	hl, #(_shadow_OAM + 0x001f)
 	ld	(hl), #0x00
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #_shadow_OAM
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x30
 	ld	(hl+), a
 	ld	(hl), #0x38
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0004)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x30
 	ld	(hl+), a
 	ld	(hl), #0x40
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0008)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x30
 	ld	(hl+), a
 	ld	(hl), #0x48
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x000c)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x30
 	ld	(hl+), a
 	ld	(hl), #0x50
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0010)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x30
 	ld	(hl+), a
 	ld	(hl), #0x5c
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0014)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x30
 	ld	(hl+), a
 	ld	(hl), #0x64
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0018)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x30
 	ld	(hl+), a
 	ld	(hl), #0x6c
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x001c)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x30
 	ld	(hl+), a
 	ld	(hl), #0x74
@@ -9730,7 +9124,7 @@ _stateGameGameOver::
 	ld	a, (de)
 	sbc	a, (hl)
 	jp	NC, 00102$
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x0022)
 	ld	(hl), #0x16
 	ld	hl, #(_shadow_OAM + 0x0026)
@@ -9750,7 +9144,7 @@ _stateGameGameOver::
 	ld	hl, #(_shadow_OAM + 0x0042)
 	ld	(hl), #0x1a
 	ld	(hl), #0x1a
-;c:/gbdk/include/gb/gb.h:1045: shadow_OAM[nb].prop=prop;
+;c:/gbdk/include/gb/gb.h:638: shadow_OAM[nb].prop=prop;
 	ld	hl, #(_shadow_OAM + 0x0023)
 	ld	(hl), #0x00
 	ld	hl, #(_shadow_OAM + 0x0027)
@@ -9769,57 +9163,57 @@ _stateGameGameOver::
 	ld	(hl), #0x00
 	ld	hl, #(_shadow_OAM + 0x0043)
 	ld	(hl), #0x00
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0020)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x38
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0024)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x40
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0028)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x48
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x002c)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x54
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0030)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x5c
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0034)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x64
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0038)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x6c
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x003c)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x74
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	hl, #(_shadow_OAM + 0x0040)
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	ld	a, #0x40
 	ld	(hl+), a
 	ld	(hl), #0x7c
@@ -9841,7 +9235,7 @@ _stateGameGameOver::
 	ld	a, e
 	rlca
 	ret	NC
-;c:/gbdk/include/gb/gb.h:999: shadow_OAM[nb].tile=tile;
+;c:/gbdk/include/gb/gb.h:610: shadow_OAM[nb].tile=tile; 
 	ld	hl, #(_shadow_OAM + 0x002e)
 	ld	(hl), #0x72
 	ld	hl, #(_shadow_OAM + 0x0032)
@@ -9854,49 +9248,49 @@ _stateGameGameOver::
 	ld	(hl), #0x72
 	ld	hl, #(_shadow_OAM + 0x0042)
 	ld	(hl), #0x72
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+44
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
 	xor	a, a
 	ld	(bc), a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+48
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
 	xor	a, a
 	ld	(bc), a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+52
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
 	xor	a, a
 	ld	(bc), a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+56
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
 	xor	a, a
 	ld	(bc), a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+60
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
 	xor	a, a
 	ld	(bc), a
-;c:/gbdk/include/gb/gb.h:1072: OAM_item_t * itm = &shadow_OAM[nb];
+;c:/gbdk/include/gb/gb.h:652: OAM_item_t * itm = &shadow_OAM[nb];
 	ld	bc, #_shadow_OAM+64
-;c:/gbdk/include/gb/gb.h:1073: itm->y=y, itm->x=x;
+;c:/gbdk/include/gb/gb.h:653: itm->y=y, itm->x=x; 
 	xor	a, a
 	ld	(bc), a
 	inc	bc
@@ -10008,7 +9402,7 @@ _stateGameLoadGameplay::
 	push	de
 	call	_set_sprite_data
 	add	sp, #4
-;c:/gbdk/include/gb/gb.h:888: WX_REG=x, WY_REG=y;
+;c:/gbdk/include/gb/gb.h:564: WX_REG=x, WY_REG=y;
 	ld	a, #0x07
 	ldh	(_WX_REG+0),a
 	ld	a, #0x88
@@ -10053,14 +9447,14 @@ _stateGameLoadGameplay::
 	ld	(hl), #0x01
 ;game_states.c:239: random_seed |= (UWORD)DIV_REG << 8;
 	ldh	a, (_DIV_REG+0)
-	ld	c, a
-	ld	a, #0x00
+	ld	b, a
+	ld	c, #0x00
 	ld	hl, #_random_seed
-	or	a, (hl)
-	ld	(hl), a
-	ld	a, c
-	inc	hl
-	or	a, (hl)
+	ld	a, (hl)
+	or	a, c
+	ld	(hl+), a
+	ld	a, (hl)
+	or	a, b
 ;game_states.c:240: initrand(random_seed);
 	ld	(hl-), a
 	ld	a, (hl+)
