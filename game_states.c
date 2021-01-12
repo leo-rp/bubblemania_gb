@@ -1,5 +1,7 @@
 
 
+
+
 void animateWater(){
 	if(water_delay > 9u){
 		water_delay = 0;
@@ -31,9 +33,13 @@ void animateWater(){
 
 /* game boot*/
 void stateGameBoot() {	
-    disable_interrupts();
+    //disable_interrupts();
     SPRITES_8x16;        
-    enable_interrupts();	
+	
+	
+	
+	
+    //enable_interrupts();	
 	random_seed = DIV_REG;
 	GAMESTATE = GAMESTATE_LOGO;	
 }

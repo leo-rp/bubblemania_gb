@@ -1,5 +1,6 @@
 
 #include <gb/gb.h>
+#include "hUGEDriver.h"
 #include <string.h>
 #include <stdio.h> 
 #include <rand.h> 
@@ -23,6 +24,10 @@
 
 #include "game_states.c"
 
+#include "song.c"
+
+
+extern const hUGESong_t Intro;
 
 
 
@@ -133,6 +138,13 @@ void stateGamePlay(){
 
 
 void main() {
+	NR52_REG = 0x80;
+    NR51_REG = 0xFF;
+    NR50_REG = 0x77;
+	__critical {
+        hUGE_init(&Intro);
+        add_VBL(hUGE_dosound);
+    } 
 	stateGameBoot();
 	while (1) {		
 		wait_vbl_done();
